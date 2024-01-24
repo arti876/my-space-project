@@ -1,0 +1,15 @@
+.postList {
+  display: flex;
+  gap: 20px;
+}
+
+.LargeMedium {
+  display: flex;
+  flex-direction: column;
+}
+
+.postsMedium {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 20px;
+}

@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  background-color: var(--system-colors-primaty-1);
+  padding: 0px 15px;
+  & div {
+    color: var(--contextual-colors-white);
+  }
+}
+
+.initials {
+  padding: 10px;
+  border-radius: 2px;
+  background-color: var(--system-colors-primaty-2);
+}

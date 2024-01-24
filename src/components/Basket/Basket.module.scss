@@ -1,0 +1,48 @@
+.basket-container {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background-color: var(--contextual-colors-light);
+  background-image: url('./icons8-basket-64.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.basket-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: var(--system-colors-primaty-2);
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--contextual-colors-white);
+}
+
+.basket-btn-container {
+  display: flex;
+  gap: 10px;
+  color: var(--contextual-colors-white);
+}
+
+.basket-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--system-colors-primaty-1);
+  transition: 0.3s;
+}
+
+.basket-btn:hover {
+  background-color: var(--system-colors-primaty-2);
+}

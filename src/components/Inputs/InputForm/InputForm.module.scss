@@ -1,0 +1,24 @@
+.label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.star {
+  color: var(--contextual-colors-error);
+}
+
+.input {
+  width: 100%;
+  background-color: var(--contextual-colors-white);
+  color: var(--background-colors-gray);
+  padding: 10px;
+}
+
+input::placeholder {
+  color: var(--background-colors-gray);
+}
+
+.error {
+  outline: 1px solid var(--contextual-colors-error);
+}

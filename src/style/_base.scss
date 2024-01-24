@@ -1,0 +1,22 @@
+* {
+  color: var(--system-colors-secondary);
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.wrapper-global {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.light {
+  min-height: 100vh;
+  background-color: var(--background-colors-extra-light);
+}
+
+.dark {
+  min-height: 100vh;
+  background-color: var(--background-colors-extra-light);
+}

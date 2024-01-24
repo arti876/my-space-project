@@ -1,0 +1,13 @@
+.active {
+  font-size: 14px;
+  text-decoration: underline;
+  color: var(--system-colors-primaty-2);
+}
+
+.hover {
+  transition: 0.3s;
+}
+
+.hover:hover {
+  color: var(--hover);
+}

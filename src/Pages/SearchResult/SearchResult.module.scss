@@ -1,0 +1,102 @@
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 25px;
+  border-bottom: 1px solid var(--background-colors-medium);
+  height: 350px;
+}
+
+.post-title {
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.post-card-top {
+  display: flex;
+  gap: 20px;
+}
+
+.post-img-container {
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.post-img-container {
+  min-width: 250px;
+  height: 250px;
+}
+
+.post-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-card-bottom-right {
+  display: flex;
+  align-items: flex-start;
+}
+
+.post-card-bottom-right {
+  gap: 15px;
+}
+
+.post-content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post-date,
+.post-description {
+  color: var(--background-colors-gray);
+}
+
+.post-date {
+  font-size: 12px;
+}
+
+.post-description {
+  font-size: 14px;
+}
+
+.post-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inputSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 50px;
+  font-size: 14px;
+  color: #000;
+  padding: 10px;
+  background-color: silver;
+}
+
+.btnSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  width: 100px;
+  height: 50px;
+  border: 3px solid silver;
+}
+
+.text {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+}

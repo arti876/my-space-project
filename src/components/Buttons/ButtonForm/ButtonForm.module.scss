@@ -1,0 +1,16 @@
+.btn {
+  width: 100%;
+  color: var(--contextual-colors-white);
+  background-color: var(--system-colors-primaty-1);
+  padding: 10px 0px;
+  transition: 0.3s;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: var(--background-colors-gray);
+}
+
+.btn:hover {
+  color: var(--hover);
+}

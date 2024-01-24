@@ -1,0 +1,20 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid var(--system-colors-primaty-2);
+  background-color: var(--system-colors-primaty-1);
+  transition: 0.3s;
+}
+
+.ico {
+  width: 25px;
+  fill: var(--contextual-colors-white);
+  transition: 0.3s;
+}
+
+.btn:hover .ico {
+  fill: var(--hover);
+}

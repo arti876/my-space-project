@@ -1,0 +1,25 @@
+.title {
+  font-size: 34px;
+  padding-top: 50px;
+}
+
+.nav-header {
+  display: flex;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 100%;
+    background-color: var(--background-colors-medium);
+  }
+}
+
+.tab {
+  padding: 30px;
+  transition: 0.3s;
+  &:hover {
+    background-color: var(--contextual-colors-light);
+  }
+}

@@ -1,0 +1,31 @@
+.light {
+  --system-colors-primaty-1: #2231aa;
+  --system-colors-primaty-2: #5360cd;
+  --system-colors-secondary: #313037;
+
+  --background-colors-gray: #8d8e97;
+  --background-colors-medium: #dadada;
+  --background-colors-extra-light: #f3f3f3;
+
+  --contextual-colors-error: #fd3419;
+  --contextual-colors-white: #ffffff;
+  --contextual-colors-light: #e8e8e8;
+
+  --hover: #31ac4c;
+}
+
+.dark {
+  --system-colors-primaty-1: #2231aa;
+  --system-colors-primaty-2: #5360cd;
+  --system-colors-secondary: #ffffff;
+
+  --background-colors-gray: #8d8e97;
+  --background-colors-medium: #dadada;
+  --background-colors-extra-light: #313037;
+
+  --contextual-colors-error: #fd3419;
+  --contextual-colors-white: #ffffff;
+  --contextual-colors-light: #e8e8e8;
+
+  --hover: #009e22;
+}

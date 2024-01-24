@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid var(--background-colors-medium);
+  padding: 20px 0px;
+}
+
+.wrapper p {
+  color: var(--background-colors-gray);
+}

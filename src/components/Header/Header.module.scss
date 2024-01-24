@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--system-colors-primaty-1);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.btn-ico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+}
+
+.ico-user {
+  width: 25px;
+  fill: var(--contextual-colors-white);
+}
+
+.ico-user {
+  transition: 0.3s;
+}
+
+.btn-ico:hover .ico-user {
+  fill: var(--hover);
+}
