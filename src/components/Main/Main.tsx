@@ -16,7 +16,8 @@ export default function Main() {
   return (
     <div className={style.wrapper}>
       <Routes>
-        <Route path='/' element={<TitlePage />} />
+        <Route path='/' />
+        <Route path='my-space-project' element={<TitlePage />} />
         <Route
           path='sign-in'
           element={

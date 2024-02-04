@@ -60,7 +60,7 @@ export default function FormSignIn() {
           >
             Password
           </InputForm>
-          <Link to='/' className={style['forgot-password']}>
+          <Link to='my-space-project' className={style['forgot-password']}>
             Forgot password?
           </Link>
         </div>
@@ -74,7 +74,7 @@ export default function FormSignIn() {
           </ButtonForm>
           <div className={style['container-sing-up']}>
             <p>Dont have an account?</p>
-            <Link to='/' className={style['btn-sign-up']}>
+            <Link to='my-space-project' className={style['btn-sign-up']}>
               Sign Up
             </Link>
           </div>
