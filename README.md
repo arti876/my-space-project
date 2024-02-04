@@ -65,7 +65,7 @@ npm install @types/node
 npm install gh-pages --save-dev
 
 в файле vite.config.ts добавить:
-  base: '/my-space-project', <<<название репозитория
+  base: '/my-space-project', <<< название репозитория
 
 в файле package.json добавить:
 {
