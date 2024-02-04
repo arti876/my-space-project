@@ -68,6 +68,9 @@ npm run predeploy
 npm run deploy
 
 
+Отменить проверку ts в файле:
+// @ts-nocheck
+
 BautttonTransition.defaultProps = {
   className: null,
 };
