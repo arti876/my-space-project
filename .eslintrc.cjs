@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['react-refresh'],
   parserOptions: { project: ['./tsconfig.json'] },
   rules: {
+    'no-param-reassign': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

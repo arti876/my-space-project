@@ -1,15 +1,18 @@
-// @ts-nocheck
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import usePagination from '../../hooks/usePagination';
 import style from './PagePost.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
-import useApi from '../../hooks/useApi';
+import { useAppSelector } from '../../hooks/useReduxTypes';
 
 export default function PagePost() {
   const { id } = useParams();
-  const { loading, error, dataApi } = useApi();
+  const {
+    status,
+    error,
+    posts: dataApi,
+  } = useAppSelector((state) => state.posts);
   const [posts, setPosts] = useState();
   const {
     firstContentIndex,
@@ -34,7 +37,7 @@ export default function PagePost() {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {status && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {posts && (
         <div id={posts[0].id} className={style.wrapper}>

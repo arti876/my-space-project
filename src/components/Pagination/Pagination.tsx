@@ -1,16 +1,15 @@
-// @ts-nocheck
 import { useEffect } from 'react';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';
-import useApi from '../../hooks/useApi';
 import { useGlobalContext } from '../../Provider/GlobalProvider';
+import { useAppSelector } from '../../hooks/useReduxTypes';
 
 interface PaginationProps {
   pageQty: number;
 }
 
 export default function Pagination({ pageQty }: PaginationProps) {
-  const { dataApi } = useApi();
+  const { posts } = useAppSelector((state) => state.posts);
   const {
     PostsData: { setPosts },
   } = useGlobalContext();
@@ -24,14 +23,14 @@ export default function Pagination({ pageQty }: PaginationProps) {
     totalPages,
   } = usePagination({
     contentPerPage: pageQty,
-    count: dataApi.length,
+    count: posts.length,
     pageNum: 1,
   });
 
   useEffect(() => {
-    const postsSlice = dataApi.slice(firstContentIndex, lastContentIndex);
+    const postsSlice = posts.slice(firstContentIndex, lastContentIndex);
     setPosts(postsSlice);
-  }, [dataApi, page]);
+  }, [posts, page]);
 
   return (
     <div className={style.wrapper}>

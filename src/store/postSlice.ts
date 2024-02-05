@@ -1,8 +1,19 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-nocheck
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
+import getRandomDay from '../utils/getRandomDay';
+import { IPost } from '..';
+
+interface IPostsState {
+  posts: IPost[];
+  status: string | null;
+  error: unknown;
+}
+
+const initialState: IPostsState = {
+  posts: [],
+  status: null,
+  error: null,
+};
 
 export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
@@ -47,27 +58,22 @@ export const fetchPosts = createAsyncThunk(
 
 const postSlice = createSlice({
   name: 'posts',
-  initialState: {
-    posts: [],
-    status: null,
-    error: null,
-  },
-  extraReducers: {
-    [fetchPosts.pending]: (state) => {
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchPosts.pending, (state) => {
       state.status = 'loading';
       state.error = null;
-    },
-    [fetchPosts.fulfilled]: (state, action) => {
+    });
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.status = 'resolved';
       state.posts = action.payload;
-    },
-    [fetchPosts.rejected]: (state, action) => {
+    });
+    builder.addCase(fetchPosts.rejected, (state, action) => {
       state.status = 'rejected';
       state.error = action.payload;
-    },
+    });
   },
 });
 
 export default postSlice.reducer;
-
-// const { status, error } = useSelector((state) => state.todos);

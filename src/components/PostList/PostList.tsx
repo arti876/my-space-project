@@ -1,12 +1,11 @@
-// @ts-nocheck
 import postListStyle from './PostList.module.scss';
-import useApi from '../../hooks/useApi';
 import PostCard from '../PostCard/Postcard';
 import { PostSize } from '../..';
 import { useGlobalContext } from '../../Provider/GlobalProvider';
+import { useAppSelector } from '../../hooks/useReduxTypes';
 
 export default function PostList() {
-  const { loading, error } = useApi();
+  const { status, error } = useAppSelector((state) => state.posts);
   const {
     PostsData: { posts },
   } = useGlobalContext();
@@ -16,7 +15,7 @@ export default function PostList() {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {status && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className={postListStyle.postList}>
         <div className={postListStyle.LargeMedium}>

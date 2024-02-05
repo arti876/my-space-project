@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useContext, useMemo, useState } from 'react';
 import { Theme } from '..';
 

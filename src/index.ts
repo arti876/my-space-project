@@ -16,6 +16,9 @@ export interface IPost {
   description: string;
   image: string;
   body: string;
-  urls: string;
+  urls: {
+    regular: string;
+  };
   small: string;
+  inFavorite: boolean;
 }

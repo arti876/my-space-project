@@ -1,20 +1,20 @@
 import { useLocation, Link } from 'react-router-dom';
 import style from './SearchResult.module.scss';
-import useApi from '../../hooks/useApi';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
+import { useAppSelector } from '../../hooks/useReduxTypes';
 
 export default function SearchResult() {
-  const { loading, error, dataApi } = useApi();
+  const { status, error, posts } = useAppSelector((state) => state.posts);
   const location = useLocation();
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {status && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {dataApi.length &&
+      {posts.length &&
         location.state &&
-        dataApi
+        posts
           .filter(({ title }) => title.toLowerCase().includes(location.state))
           .map((post) => (
             <div key={post.id} id={post.id} className={style['post-card']}>

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useEffect, useState, useCallback } from 'react';
 import axios, { AxiosError } from 'axios';
 import getRandomDay from '../utils/getRandomDay';
