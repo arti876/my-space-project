@@ -37,14 +37,6 @@ https://habr.com/ru/articles/521902/
 npm i axios
 
 
-Установка библиотеки для работы с React-Router:
-Установка:Документация:
-https://ru.hexlet.io/blog/posts/react-router-v6
-
-Установка:
-npm i react-router-dom
-
-
 Install Material UI, the world's most popular React UI framework.
 https://mui.com/material-ui/getting-started/installation/
 
@@ -84,6 +76,11 @@ npm run deploy
 
 Отменить проверку ts в файле:
 // @ts-nocheck
+
+
+Подключение Redux Toolkit к React
+npm install @reduxjs/toolkit react-redux
+
 
 interface props defaultProps:
 

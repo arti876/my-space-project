@@ -30,6 +30,7 @@ export default function useApi() {
         date: getRandomDay(new Date(2023, 0, 1), new Date()),
         description: post.body,
         title: post.title,
+        inFavorite: false,
       }));
 
       const images = dataApiImages.map((image: IPost) => ({
