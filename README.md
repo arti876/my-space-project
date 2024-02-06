@@ -82,6 +82,22 @@ npm run deploy
 npm install @reduxjs/toolkit react-redux
 
 
+Создание фейкового REST API с помощью json-server
+https://code.tutsplus.com/ru/fake-rest-api-up-and-running-using-json-server--cms-27871t
+
+устанавилваем пакет:
+npm install -g json-server
+
+создаем файл в с даными db.json
+
+запускаем сервер
+json-server db.json
+
+берем полученный api и работаем с ним
+http://localhost:3000/posts
+
+
+
 interface props defaultProps:
 
 BautttonTransition.defaultProps = {

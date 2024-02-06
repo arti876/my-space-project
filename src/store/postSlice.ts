@@ -19,35 +19,41 @@ export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
   async function fetchPostsData(_, { rejectWithValue }) {
     try {
-      const urls = Object.values({
-        posts: 'https://dummyjson.com/posts',
-        imageAatronaut:
-          'https://api.unsplash.com/search/photos?page=1&per_page=30&query=astronaut&client_id=za_zdSM8jklgxHd6iw-hJpsSeEzKHsfEE69XmtnaZFA',
-      });
+      // const urls = Object.values({
+      //   posts: 'https://dummyjson.com/posts',
+      //   imageAatronaut:
+      //     'https://api.unsplash.com/search/photos?page=17&per_page=30&query=astronaut&client_id=za_zdSM8jklgxHd6iw-hJpsSeEzKHsfEE69XmtnaZFA',
+      // });
 
-      const response = await axios.all(urls.map((url) => axios.get(url)));
+      // const response = await axios.all(urls.map((url) => axios.get(url)));
 
-      const responsePosts = response[0].data.posts;
-      const responseImages = response[1].data.results;
+      // const responsePosts = response[0].data.posts;
+      // const responseImages = response[1].data.results;
 
-      const posts = responsePosts.map((post: IPost) => ({
-        id: post.id,
-        date: getRandomDay(new Date(2023, 0, 1), new Date()),
-        description: post.body,
-        title: post.title,
-        inFavorite: false,
-      }));
+      // const posts = responsePosts.map((post: IPost) => ({
+      //   id: post.id,
+      //   date: getRandomDay(new Date(2023, 0, 1), new Date()),
+      //   description: post.body,
+      //   title: post.title,
+      //   inFavorite: false,
+      // }));
 
-      const images = responseImages.map((image: IPost) => ({
-        image: image.urls.regular,
-      }));
+      // const images = responseImages.map((image: IPost) => ({
+      //   image: image.urls.regular,
+      // }));
 
-      const apiPosts = posts.map((item: object, index: number) => ({
-        ...item,
-        ...images[index],
-      }));
+      // const apiPosts = posts.map((item: object, index: number) => ({
+      //   ...item,
+      //   ...images[index],
+      // }));
 
-      return apiPosts;
+      // return apiPosts;
+
+      const url = 'http://localhost:3000/posts';
+
+      const response = await axios.get(url);
+
+      return response;
     } catch (error) {
       const errorFetch = error as AxiosError;
 
