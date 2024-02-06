@@ -1,7 +1,5 @@
-// @ts-nocheck
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
-import getRandomDay from '../utils/getRandomDay';
 import { IPost } from '..';
 
 interface IPostsState {
@@ -20,41 +18,10 @@ export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
   async function fetchPostsData(_, { rejectWithValue }) {
     try {
-      // const urls = Object.values({
-      //   posts: 'https://dummyjson.com/posts',
-      //   imageAatronaut:
-      //     'https://api.unsplash.com/search/photos?page=1&per_page=30&query=astronaut&client_id=za_zdSM8jklgxHd6iw-hJpsSeEzKHsfEE69XmtnaZFA',
-      // });
-
-      // const response = await axios.all(urls.map((url) => axios.get(url)));
-
-      // const responsePosts = response[0].data.posts;
-      // const responseImages = response[1].data.results;
-
-      // const posts = responsePosts.map((post: IPost) => ({
-      //   id: post.id,
-      //   date: getRandomDay(new Date(2023, 0, 1), new Date()),
-      //   description: post.body,
-      //   title: post.title,
-      //   inFavorite: false,
-      // }));
-
-      // const images = responseImages.map((image: IPost) => ({
-      //   image: image.urls.regular,
-      // }));
-
-      // const apiPosts = posts.map((item: object, index: number) => ({
-      //   ...item,
-      //   ...images[index],
-      // }));
-
-      // return apiPosts;
-
-      // const url = 'http://localhost:3000/posts';
       const url =
-        'https://run.mocky.io/v3/fe0ed702-76ed-4210-8f59-8b1890ec57b3';
+        'https://run.mocky.io/v3/a1613be0-22ff-47f3-b427-25e128c17896';
       const response = await axios.get(url);
-      return response.data.posts;
+      return response.data;
     } catch (error) {
       const errorFetch = error as AxiosError;
 
