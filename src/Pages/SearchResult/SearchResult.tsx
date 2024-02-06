@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useLocation, Link } from 'react-router-dom';
 import style from './SearchResult.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';

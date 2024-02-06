@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import usePagination from '../../hooks/usePagination';

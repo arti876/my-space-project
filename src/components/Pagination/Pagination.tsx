@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect } from 'react';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';

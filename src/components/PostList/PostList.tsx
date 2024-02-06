@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import postListStyle from './PostList.module.scss';
 import PostCard from '../PostCard/Postcard';
 import { PostSize } from '../..';

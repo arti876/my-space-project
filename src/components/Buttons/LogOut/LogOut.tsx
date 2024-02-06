@@ -14,7 +14,7 @@ export default function LogOut({ className }: LogOutProps) {
 
   function handleClick() {
     setLogin(false);
-    navigate('my-space-project', { replace: true });
+    navigate('/', { replace: true });
   }
 
   return (

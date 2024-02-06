@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 import getRandomDay from '../utils/getRandomDay';
@@ -22,7 +23,7 @@ export const fetchPosts = createAsyncThunk(
       // const urls = Object.values({
       //   posts: 'https://dummyjson.com/posts',
       //   imageAatronaut:
-      //     'https://api.unsplash.com/search/photos?page=17&per_page=30&query=astronaut&client_id=za_zdSM8jklgxHd6iw-hJpsSeEzKHsfEE69XmtnaZFA',
+      //     'https://api.unsplash.com/search/photos?page=1&per_page=30&query=astronaut&client_id=za_zdSM8jklgxHd6iw-hJpsSeEzKHsfEE69XmtnaZFA',
       // });
 
       // const response = await axios.all(urls.map((url) => axios.get(url)));
@@ -49,11 +50,12 @@ export const fetchPosts = createAsyncThunk(
 
       // return apiPosts;
 
-      const url = 'http://localhost:3000/posts';
-
+      // const url = 'http://localhost:3000/posts';
+      const url =
+        'https://run.mocky.io/v3/fe731443-1c66-4989-8407-013fbf798335';
       const response = await axios.get(url);
-
-      return response;
+      console.log(response.data);
+      return response.data.posts;
     } catch (error) {
       const errorFetch = error as AxiosError;
 
