@@ -52,9 +52,8 @@ export const fetchPosts = createAsyncThunk(
 
       // const url = 'http://localhost:3000/posts';
       const url =
-        'https://run.mocky.io/v3/fe731443-1c66-4989-8407-013fbf798335';
+        'https://run.mocky.io/v3/fe0ed702-76ed-4210-8f59-8b1890ec57b3';
       const response = await axios.get(url);
-      console.log(response.data);
       return response.data.posts;
     } catch (error) {
       const errorFetch = error as AxiosError;
