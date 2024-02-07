@@ -36,12 +36,12 @@ const postSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    getPaginPosts(state, action) {
-      state.paginPosts = state.posts.slice(
-        action.payload.firstContentIndex,
-        action.payload.lastContentIndex,
-      );
-    },
+    // getPaginPosts(state, action) {
+    //   state.paginPosts = state.posts.slice(
+    //     action.payload.firstContentIndex,
+    //     action.payload.lastContentIndex,
+    //   );
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
@@ -59,6 +59,6 @@ const postSlice = createSlice({
   },
 });
 
-export const { getPaginPosts } = postSlice.actions;
+// export const { getPaginPosts } = postSlice.actions;
 
 export default postSlice.reducer;

@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import postListStyle from './PostList.module.scss';
 import PostCard from '../PostCard/Postcard';
 import { PostSize } from '../..';
@@ -7,11 +8,12 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import Pagination from '../Pagination/Pagination';
 
 export default function PostList() {
-  const { status, error, paginPosts } = useAppSelector((state) => state.posts);
+  const [posts, setPosts] = useState([]);
+  const { status, error } = useAppSelector((state) => state.posts);
   const { pathname } = useLocation();
-  const postLarge = paginPosts.slice(0, 1);
-  const postMedium = paginPosts.slice(1, 5);
-  const postSmall = paginPosts.slice(5, 11);
+  const postLarge = posts.slice(0, 1);
+  const postMedium = posts.slice(1, 5);
+  const postSmall = posts.slice(5, 11);
 
   return (
     <>
@@ -21,26 +23,26 @@ export default function PostList() {
       <div className={postListStyle.postList}>
         <div className={postListStyle.LargeMedium}>
           <div className={postListStyle.postsLarge}>
-            {paginPosts.length &&
+            {posts.length &&
               postLarge.map((post) => (
                 <PostCard post={post} size={PostSize.Large} key={post.id} />
               ))}
           </div>
           <div className={postListStyle.postsMedium}>
-            {paginPosts.length &&
+            {posts.length &&
               postMedium.map((post) => (
                 <PostCard post={post} size={PostSize.Medium} key={post.id} />
               ))}
           </div>
         </div>
         <div className={postListStyle.postsSmall}>
-          {paginPosts.length &&
+          {posts.length &&
             postSmall.map((post) => (
               <PostCard post={post} size={PostSize.Small} key={post.id} />
             ))}
         </div>
       </div>
-      <Pagination pageQty={11} />
+      <Pagination pageNum={1} pageQty={11} setPosts={setPosts} />
     </>
   );
 }

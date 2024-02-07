@@ -1,16 +1,21 @@
 import { useEffect } from 'react';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';
-import { useAppDispatch, useAppSelector } from '../../hooks/useReduxTypes';
-import { getPaginPosts } from '../../store/postSlice';
+import { useAppSelector } from '../../hooks/useReduxTypes';
+import { IPost } from '../..';
 
 interface PaginationProps {
   pageQty: number;
+  pageNum?: number;
+  setPosts: (posts: IPost[]) => void;
 }
 
-export default function Pagination({ pageQty }: PaginationProps) {
+export default function Pagination({
+  pageQty,
+  pageNum,
+  setPosts,
+}: PaginationProps) {
   const { posts } = useAppSelector((state) => state.posts);
-  const dispatch = useAppDispatch();
   const {
     firstContentIndex,
     lastContentIndex,
@@ -22,11 +27,12 @@ export default function Pagination({ pageQty }: PaginationProps) {
   } = usePagination({
     contentPerPage: pageQty,
     count: posts.length,
-    pageNum: 1,
+    pageNum,
   });
 
   useEffect(() => {
-    dispatch(getPaginPosts({ firstContentIndex, lastContentIndex }));
+    const postsSlice = posts.slice(firstContentIndex, lastContentIndex);
+    setPosts(postsSlice);
   }, [posts, page]);
 
   return (
@@ -53,3 +59,7 @@ export default function Pagination({ pageQty }: PaginationProps) {
     </div>
   );
 }
+
+Pagination.defaultProps = {
+  pageNum: 1,
+};
