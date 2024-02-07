@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchPosts } from './store/postSlice';
-import { useAppDispatch } from './hooks/useReduxTypes';
+import { useAppDispatch } from './store/store';
 import AdvancedLevel from './Pages/AdvancedLevel/AdvancedLevel';
 import FormSignIn from './Pages/FormSignIn/FormSignIn';
 import FormSuccess from './Pages/FormSuccess/FormSuccess';

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';
-import { useAppSelector } from '../../hooks/useReduxTypes';
+import { useAppSelector } from '../../store/store';
 import { IPost } from '../..';
 
 interface PaginationProps {

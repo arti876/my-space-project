@@ -3,7 +3,7 @@ import { useState } from 'react';
 import postListStyle from './PostList.module.scss';
 import PostCard from '../PostCard/Postcard';
 import { PostSize } from '../..';
-import { useAppSelector } from '../../hooks/useReduxTypes';
+import { useAppSelector } from '../../store/store';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import Pagination from '../Pagination/Pagination';
 

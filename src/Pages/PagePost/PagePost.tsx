@@ -1,56 +1,34 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import usePagination from '../../hooks/usePagination';
+import { useState } from 'react';
 import style from './PagePost.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
-import { useAppDispatch, useAppSelector } from '../../hooks/useReduxTypes';
+import { useAppSelector } from '../../store/store';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
-import { getPaginPosts } from '../../store/postSlice';
+import Pagination from '../../components/Pagination/Pagination';
 
 export default function PagePost() {
+  const [posts, setPosts] = useState([]);
   const { id } = useParams();
-  const { status, error, posts, paginPosts } = useAppSelector(
-    (state) => state.posts,
-  );
-  const dispatch = useAppDispatch();
-  const {
-    firstContentIndex,
-    lastContentIndex,
-    nextPage,
-    prevPage,
-    page,
-    setPage,
-    totalPages,
-  } = usePagination({
-    contentPerPage: 1,
-    count: posts.length,
-    pageNum: Number(id),
-  });
-
-  useEffect(() => {
-    if (posts.length) {
-      dispatch(getPaginPosts({ firstContentIndex, lastContentIndex }));
-    }
-  }, [posts, page]);
+  const { status, error } = useAppSelector((state) => state.posts);
 
   return (
     <>
       <SectionHeader title='Post' />
       {status === 'loading' && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {paginPosts.length && (
-        <div id={paginPosts[0].id} className={style.wrapper}>
+      {posts.length && (
+        <div id={posts[0].id} className={style.wrapper}>
           <div className={style['post-container']}>
-            <div className={style.title}>{paginPosts[0].title}</div>
+            <div className={style.title}>{posts[0].title}</div>
             <div className={style['img-container']}>
               <img
                 className={style['post-img']}
-                src={paginPosts[0].image}
+                src={posts[0].image}
                 alt='img'
               />
             </div>
-            <div className={style.description}>{paginPosts[0].description}</div>
+            <div className={style.description}>{posts[0].description}</div>
             <div className={style['post-footer-btn']}>
               <ButtonLike className={style['btn-like-background']} />
               <ButtonBookmark className={style.bookmark}>
@@ -58,29 +36,9 @@ export default function PagePost() {
               </ButtonBookmark>
             </div>
           </div>
-          <div className={style.wrapperPag}>
-            <button type='button' onClick={prevPage} className={style.pagePag}>
-              ⭅ Previous
-            </button>
-            {[...Array(totalPages).keys()].map((el) => (
-              <button
-                type='button'
-                onClick={() => setPage(el + 1)}
-                key={el}
-                className={`${style.pagePag} ${page === el + 1 ? style.activePag : ''}`}
-              >
-                {el + 1}
-              </button>
-            ))}
-            <button type='button' onClick={nextPage} className={style.pagePag}>
-              Next ⭆
-            </button>
-            {/* <div className={style.count}>
-        {page}/{totalPages}
-      </div> */}
-          </div>
         </div>
       )}
+      <Pagination pageNum={Number(id)} pageQty={1} setPosts={setPosts} />
     </>
   );
 }
