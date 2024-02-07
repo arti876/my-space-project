@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import usePagination from '../../hooks/usePagination';
@@ -6,6 +5,7 @@ import style from './PagePost.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppSelector } from '../../hooks/useReduxTypes';
+import SectionHeader from '../../components/SectionHeader/SectionHeader';
 
 export default function PagePost() {
   const { id } = useParams();
@@ -38,7 +38,8 @@ export default function PagePost() {
 
   return (
     <>
-      {status && <p>Loading...</p>}
+      <SectionHeader title='Post' />
+      {status === 'loading' && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {posts && (
         <div id={posts[0].id} className={style.wrapper}>

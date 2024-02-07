@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useGlobalContext } from '../Provider/GlobalProvider';
 
-export default function PrivatePoute() {
+export default function PrivateRoute() {
   const {
     SuccessfulLogin: { login },
   } = useGlobalContext();

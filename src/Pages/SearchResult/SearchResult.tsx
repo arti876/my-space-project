@@ -1,9 +1,9 @@
-// @ts-nocheck
 import { useLocation, Link } from 'react-router-dom';
 import style from './SearchResult.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppSelector } from '../../hooks/useReduxTypes';
+import SectionHeader from '../../components/SectionHeader/SectionHeader';
 
 export default function SearchResult() {
   const { status, error, posts } = useAppSelector((state) => state.posts);
@@ -11,7 +11,8 @@ export default function SearchResult() {
 
   return (
     <>
-      {status && <p>Loading...</p>}
+      <SectionHeader title='Search result' />
+      {status === 'loading' && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {posts.length &&
         location.state &&

@@ -1,8 +1,10 @@
 .wrapper {
   display: flex;
+  max-width: 1170px;
   justify-content: space-between;
   border-top: 2px solid var(--background-colors-medium);
-  padding: 20px 0px;
+  padding: 20px 15px;
+  margin: 0px auto;
 }
 
 .wrapper p {

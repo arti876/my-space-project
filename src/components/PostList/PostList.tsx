@@ -1,10 +1,11 @@
-// @ts-nocheck
-
+import { useLocation } from 'react-router-dom';
 import postListStyle from './PostList.module.scss';
 import PostCard from '../PostCard/Postcard';
 import { PostSize } from '../..';
 import { useGlobalContext } from '../../Provider/GlobalProvider';
 import { useAppSelector } from '../../hooks/useReduxTypes';
+import SectionHeader from '../SectionHeader/SectionHeader';
+import Pagination from '../Pagination/Pagination';
 
 export default function PostList() {
   const { status, error } = useAppSelector((state) => state.posts);
@@ -14,10 +15,12 @@ export default function PostList() {
   const postLarge = posts.slice(0, 1);
   const postMedium = posts.slice(1, 5);
   const postSmall = posts.slice(5, 11);
+  const { pathname } = useLocation();
 
   return (
     <>
-      {status && <p>Loading...</p>}
+      {pathname === '/posts' && <SectionHeader title='Posts' />}
+      {status === 'loading' && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className={postListStyle.postList}>
         <div className={postListStyle.LargeMedium}>
@@ -41,6 +44,7 @@ export default function PostList() {
             ))}
         </div>
       </div>
+      <Pagination pageQty={11} />
     </>
   );
 }
