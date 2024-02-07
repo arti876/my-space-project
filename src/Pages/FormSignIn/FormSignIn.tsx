@@ -1,17 +1,16 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './FormSignIn.module.scss';
-import { useGlobalContext } from '../../Provider/GlobalProvider';
 import InputForm from '../../components/Inputs/InputForm/InputForm';
 import ButtonForm from '../../components/Buttons/ButtonForm/ButtonForm';
 import Form from '../../components/Form/Form';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
+import { useAppDispatch } from '../../store/store';
+import { toggleAuth } from '../../store/authSlise';
 
 export default function FormSignIn() {
-  const {
-    FormData: { form, setForm },
-    SuccessfulLogin: { setLogin },
-  } = useGlobalContext();
+  const [form, setForm] = useState({});
+  const dispatch = useAppDispatch();
   const emailRef = useRef();
   const passworfRef = useRef();
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ export default function FormSignIn() {
       });
       passworfRef.current?.focus();
     } else {
-      setLogin(true);
+      dispatch(toggleAuth());
       navigate('/success');
     }
   }
@@ -50,6 +49,8 @@ export default function FormSignIn() {
             id='email'
             type='text'
             placeholder='Enter your mail'
+            form={form}
+            setForm={setForm}
           >
             Email
           </InputForm>
@@ -59,6 +60,8 @@ export default function FormSignIn() {
               id='password'
               type='password'
               placeholder='Enter password'
+              form={form}
+              setForm={setForm}
             >
               Password
             </InputForm>

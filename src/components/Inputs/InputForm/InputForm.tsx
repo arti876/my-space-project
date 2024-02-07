@@ -1,22 +1,19 @@
-// @ts-nocheck
 import { LegacyRef, forwardRef } from 'react';
 import style from './InputForm.module.scss';
-import { useGlobalContext } from '../../../Provider/GlobalProvider';
 
 interface InputFormProp {
   children: string | JSX.Element;
   id: string;
   type: string;
   placeholder: string;
+  form?: object;
+  setForm?: () => void;
 }
 
 export default forwardRef(function InputForm(
-  { children, id, type, placeholder }: InputFormProp,
+  { children, id, type, placeholder, form, setForm }: InputFormProp,
   ref: React.LegacyRef<HTMLInputElement>,
 ) {
-  const { FormData } = useGlobalContext();
-  const { form, setForm } = FormData;
-
   function handleInput(value: LegacyRef<HTMLInputElement>) {
     const { current } = value;
     setForm({

@@ -1,22 +1,20 @@
 import { Link } from 'react-router-dom';
 import User from '../User/User';
-import { useGlobalContext } from '../../Provider/GlobalProvider';
 import style from './Header.module.scss';
 import Hamburger from '../Hamburger/Hamburger';
 import Icons from '../Icons/Icons';
 import ButtonSearch from '../Buttons/ButtonSearch/ButtonSearch';
+import { useAppSelector } from '../../store/store';
 
 export default function Header() {
-  const {
-    SuccessfulLogin: { login },
-  } = useGlobalContext();
+  const { authorized } = useAppSelector((state) => state.auth);
 
   return (
     <div className={style.wrapper}>
       <Hamburger />
       <div className={style.container}>
         <ButtonSearch />
-        {login ? (
+        {authorized ? (
           <User />
         ) : (
           <Link to='sign-in' className={style['btn-ico']}>

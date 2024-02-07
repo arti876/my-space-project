@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useContext, useMemo, useState } from 'react';
 import { Theme } from '..';
 
@@ -14,14 +13,6 @@ interface IMainContext {
   ToggleTheme: {
     theme: Theme;
     setTeme: React.Dispatch<React.SetStateAction<Theme>>;
-  };
-  SuccessfulLogin: {
-    login: boolean;
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
-  };
-  PostsData: {
-    posts: [];
-    setPosts: () => void;
   };
 }
 
@@ -40,8 +31,6 @@ export function useGlobalContext() {
 export default function GlobalProvider({ children }: MainProviderProps) {
   const [form, setForm] = useState({});
   const [theme, setTeme] = useState(Theme.Light);
-  const [login, setLogin] = useState(false);
-  const [posts, setPosts] = useState([]);
 
   const contextData = useMemo(
     () => ({
@@ -53,16 +42,8 @@ export default function GlobalProvider({ children }: MainProviderProps) {
         theme,
         setTeme,
       },
-      SuccessfulLogin: {
-        login,
-        setLogin,
-      },
-      PostsData: {
-        posts,
-        setPosts,
-      },
     }),
-    [form, login, posts, theme],
+    [form, theme],
   );
 
   return (

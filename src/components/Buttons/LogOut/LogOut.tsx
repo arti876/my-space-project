@@ -1,19 +1,18 @@
 import { useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '../../../Provider/GlobalProvider';
+import { useAppDispatch } from '../../../store/store';
+import { toggleAuth } from '../../../store/authSlise';
 
 interface LogOutProps {
   className: string;
 }
 
 export default function LogOut({ className }: LogOutProps) {
-  const {
-    SuccessfulLogin: { setLogin },
-  } = useGlobalContext();
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
   function handleClick() {
-    setLogin(false);
+    dispatch(toggleAuth());
     navigate('/', { replace: true });
   }
 

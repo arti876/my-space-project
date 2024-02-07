@@ -2,17 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import style from './Hamburger.module.scss';
 import User from '../User/User';
 import BautttonTheme from '../Buttons/ButtonTheme/ButtonTheme';
-import { useGlobalContext } from '../../Provider/GlobalProvider';
 import LogOut from '../Buttons/LogOut/LogOut';
 import LinkHamb from '../CustomLink/LinkHamb';
+import { useAppSelector } from '../../store/store';
 
 export default function Hamburger() {
   const [hamburger, setHamburger] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   const refHamb = useRef<HTMLButtonElement | null>(null);
-  const {
-    SuccessfulLogin: { login },
-  } = useGlobalContext();
+  const { authorized } = useAppSelector((state) => state.auth);
 
   function handleClick(e: Event) {
     const target = e.target as HTMLButtonElement;
@@ -62,12 +60,12 @@ export default function Hamburger() {
       </button>
       {hamburger && (
         <div className={style['hamburger-menu']}>
-          {!login && (
+          {!authorized && (
             <LinkHamb to='sign-in' className={style['btn-menu']}>
               Sig In
             </LinkHamb>
           )}
-          {login && (
+          {authorized && (
             <>
               <User />
               <LinkHamb to='blog/all' className={style['btn-menu']}>
@@ -90,7 +88,7 @@ export default function Hamburger() {
           <div className={style['btn-theme']}>
             <BautttonTheme />
           </div>
-          {login && (
+          {authorized && (
             <LogOut className={`${style['btn-menu']} ${style.logout}`} />
           )}
         </div>

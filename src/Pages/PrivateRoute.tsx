@@ -1,10 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useGlobalContext } from '../Provider/GlobalProvider';
+import { useAppSelector } from '../store/store';
 
 export default function PrivateRoute() {
-  const {
-    SuccessfulLogin: { login },
-  } = useGlobalContext();
+  const { authorized } = useAppSelector((state) => state.auth);
 
-  return login ? <Outlet /> : <Navigate to='sign-in' />;
+  return authorized ? <Outlet /> : <Navigate to='sign-in' />;
 }
