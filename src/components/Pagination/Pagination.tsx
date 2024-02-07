@@ -1,9 +1,8 @@
-// @ts-nocheck
 import { useEffect } from 'react';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';
-import { useGlobalContext } from '../../Provider/GlobalProvider';
-import { useAppSelector } from '../../hooks/useReduxTypes';
+import { useAppDispatch, useAppSelector } from '../../hooks/useReduxTypes';
+import { getPaginPosts } from '../../store/postSlice';
 
 interface PaginationProps {
   pageQty: number;
@@ -11,9 +10,7 @@ interface PaginationProps {
 
 export default function Pagination({ pageQty }: PaginationProps) {
   const { posts } = useAppSelector((state) => state.posts);
-  const {
-    PostsData: { setPosts },
-  } = useGlobalContext();
+  const dispatch = useAppDispatch();
   const {
     firstContentIndex,
     lastContentIndex,
@@ -29,8 +26,7 @@ export default function Pagination({ pageQty }: PaginationProps) {
   });
 
   useEffect(() => {
-    const postsSlice = posts.slice(firstContentIndex, lastContentIndex);
-    setPosts(postsSlice);
+    dispatch(getPaginPosts({ firstContentIndex, lastContentIndex }));
   }, [posts, page]);
 
   return (

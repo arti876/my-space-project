@@ -4,12 +4,14 @@ import { IPost } from '..';
 
 interface IPostsState {
   posts: IPost[];
+  paginPosts: IPost[];
   status: string | null;
   error: unknown;
 }
 
 const initialState: IPostsState = {
   posts: [],
+  paginPosts: [],
   status: null,
   error: null,
 };
@@ -33,7 +35,14 @@ export const fetchPosts = createAsyncThunk(
 const postSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    getPaginPosts(state, action) {
+      state.paginPosts = state.posts.slice(
+        action.payload.firstContentIndex,
+        action.payload.lastContentIndex,
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
       state.status = 'loading';
@@ -49,5 +58,7 @@ const postSlice = createSlice({
     });
   },
 });
+
+export const { getPaginPosts } = postSlice.actions;
 
 export default postSlice.reducer;
