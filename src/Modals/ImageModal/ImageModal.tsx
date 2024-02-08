@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useClickAway } from '@uidotdev/usehooks';
 import style from './ImageModal.module.scss';
 import { useAppDispatch, useAppSelector } from '../../store/store';
@@ -22,13 +22,10 @@ export default function ImageModal() {
 
   return (
     <div className={inActive ? style.modal : style.hide}>
-      <div className={style.containerImage}>
-        <img
-          ref={refOutside}
-          className={style.image}
-          src={imageUrl}
-          alt='img'
-        />
+      <div ref={refOutside} className={style.containerImage}>
+        <button type='button' onClick={() => {}} className={style.btnLeft} />
+        <img className={style.image} src={imageUrl} alt='img' />
+        <button type='button' onClick={() => {}} className={style.btnRight} />
       </div>
     </div>
   );
