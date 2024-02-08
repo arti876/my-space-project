@@ -13,8 +13,12 @@ export default function ImageModal() {
   });
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-  }, []);
+    if (inActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.removeAttribute('style');
+    }
+  }, [inActive]);
 
   return (
     <div className={inActive ? style.modal : style.hide}>
