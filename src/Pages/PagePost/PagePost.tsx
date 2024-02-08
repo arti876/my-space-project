@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import style from './PagePost.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
@@ -31,7 +31,7 @@ export default function PagePost() {
             <div className={style.description}>{posts[0].description}</div>
             <div className={style['post-footer-btn']}>
               <ButtonLike className={style['btn-like-background']} />
-              <ButtonBookmark className={style.bookmark}>
+              <ButtonBookmark idPost='123' className={style.bookmark}>
                 <span>Add to favorites</span>
               </ButtonBookmark>
             </div>

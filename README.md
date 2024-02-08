@@ -97,6 +97,12 @@ json-server db.json
 http://localhost:3000/posts
 
 
+useClickAway
+Detect clicks outside of specific component with useClickAway.
+
+npm i @uidotdev/usehooks
+
+
 Как сделать модальное окно react
 https://ru.hexlet.io/qna/javascript/questions/kak-sdelat-modalnoe-okno-react
 https://www.npmjs.com/package/@types/react-modal
@@ -107,9 +113,6 @@ npm install react-modal
 npm install --save @types/react-modal
 
 import Modal from 'react-modal';
-
-
-interface props defaultProps:
 
 BautttonTransition.defaultProps = {
   className: null,
