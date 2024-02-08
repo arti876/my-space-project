@@ -1,12 +1,10 @@
 import style from './ButtonTheme.module.scss';
-import { useGlobalContext } from '../../../Provider/GlobalProvider';
+import { useThemeContext } from '../../../Provider/ThemeProvider';
 import { Theme } from '../../..';
 import Icons from '../../Icons/Icons';
 
 export default function BautttonTheme() {
-  const {
-    ToggleTheme: { theme, setTeme },
-  } = useGlobalContext();
+  const { theme, setTeme } = useThemeContext();
 
   function handleClick() {
     setTeme(theme === Theme.Light ? Theme.Dark : Theme.Light);

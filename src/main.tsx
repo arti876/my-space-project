@@ -5,19 +5,19 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import store from './store/store';
 import Theme from './components/Theme/Theme';
-import GlobalProvider from './Provider/GlobalProvider';
+import ThemeProvider from './Provider/ThemeProvider';
 import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
   <Provider store={store}>
-    <GlobalProvider>
+    <ThemeProvider>
       <BrowserRouter>
         <Theme>
           <App />
         </Theme>
       </BrowserRouter>
-    </GlobalProvider>
+    </ThemeProvider>
   </Provider>,
   // </React.StrictMode>,
 );
