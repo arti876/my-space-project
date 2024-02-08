@@ -3,6 +3,8 @@ import stylePosrcard from './Postcard.module.scss';
 import { IPost, PostSize } from '../..';
 import ButtonLike from '../Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../Buttons/ButtonBookmark/ButtonBookmark';
+import { useAppDispatch } from '../../store/store';
+import { getImageUrl, toggleModal } from '../../store/modalSlise';
 
 interface PostProps {
   post: IPost;
@@ -11,6 +13,7 @@ interface PostProps {
 
 export default function PostCard({ post, size }: PostProps) {
   const { id, title, date, description, image } = post;
+  const dispatch = useAppDispatch();
 
   let postSize = null;
 
@@ -20,6 +23,11 @@ export default function PostCard({ post, size }: PostProps) {
     postSize = PostSize.Medium;
   } else if (size === PostSize.Small) {
     postSize = PostSize.Small;
+  }
+
+  function handleClick() {
+    dispatch(toggleModal(true));
+    dispatch(getImageUrl(image));
   }
 
   return (
@@ -42,9 +50,13 @@ export default function PostCard({ post, size }: PostProps) {
             <p className={stylePosrcard['post-description']}>{description}</p>
           )}
         </div>
-        <div className={stylePosrcard[`post-img-container--${postSize}`]}>
+        <button
+          type='button'
+          onClick={handleClick}
+          className={stylePosrcard[`post-img-container--${postSize}`]}
+        >
           <img className={stylePosrcard['post-img']} src={image} alt='img' />
-        </div>
+        </button>
       </div>
       <div className={stylePosrcard['post-card-bottom']}>
         <ButtonLike />

@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import postReducer from './postSlice';
 import authReducer from './authSlise';
+import modalReducer from './modalSlise';
 
 const store = configureStore({
   reducer: {
     posts: postReducer,
     auth: authReducer,
+    modal: modalReducer,
   },
 });
 

@@ -1,4 +1,7 @@
 .light {
+  min-height: 100vh;
+  background-color: var(--background-colors-extra-light);
+
   --system-colors-primaty-1: #2231aa;
   --system-colors-primaty-2: #5360cd;
   --system-colors-secondary: #313037;
@@ -15,6 +18,9 @@
 }
 
 .dark {
+  min-height: 100vh;
+  background-color: var(--background-colors-extra-light);
+
   --system-colors-primaty-1: #2231aa;
   --system-colors-primaty-2: #5360cd;
   --system-colors-secondary: #ffffff;

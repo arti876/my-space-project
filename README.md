@@ -97,6 +97,17 @@ json-server db.json
 http://localhost:3000/posts
 
 
+Как сделать модальное окно react
+https://ru.hexlet.io/qna/javascript/questions/kak-sdelat-modalnoe-okno-react
+https://www.npmjs.com/package/@types/react-modal
+https://reactcommunity.org/react-modal/
+
+устанавилваем пакет:
+npm install react-modal
+npm install --save @types/react-modal
+
+import Modal from 'react-modal';
+
 
 interface props defaultProps:
 
