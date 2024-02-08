@@ -24,6 +24,7 @@ export default function Pagination({
     page,
     setPage,
     totalPages,
+    gaps,
   } = usePagination({
     contentPerPage: pageQty,
     count: posts.length,
@@ -33,29 +34,51 @@ export default function Pagination({
   useEffect(() => {
     const postsSlice = posts.slice(firstContentIndex, lastContentIndex);
     setPosts(postsSlice);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts, page]);
 
   return (
     <div className={style.wrapper}>
-      <button type='button' onClick={prevPage} className={style.page}>
+      <button
+        type='button'
+        onClick={prevPage}
+        className={`${style.page} ${page === 1 && style.disabled}`}
+      >
         ⭅ Previous
       </button>
-      {[...Array(totalPages).keys()].map((el) => (
+      <button
+        type='button'
+        onClick={() => setPage(1)}
+        className={`${style.page} ${page === 1 && style.active}`}
+      >
+        1
+      </button>
+      {gaps.before ? '...' : null}
+      {gaps.paginationGroup.map((el) => (
         <button
           type='button'
-          onClick={() => setPage(el + 1)}
+          onClick={() => setPage(el)}
           key={el}
-          className={`${style.page} ${page === el + 1 ? style.active : ''}`}
+          className={`${style.page} ${page === el ? style.active : ''}`}
         >
-          {el + 1}
+          {el}
         </button>
       ))}
-      <button type='button' onClick={nextPage} className={style.page}>
+      {gaps.after ? '...' : null}
+      <button
+        type='button'
+        onClick={() => setPage(totalPages)}
+        className={`${style.page} ${page === totalPages && style.active}`}
+      >
+        {totalPages}
+      </button>
+      <button
+        type='button'
+        onClick={nextPage}
+        className={`${style.page} ${page === totalPages && style.disabled}`}
+      >
         Next ⭆
       </button>
-      {/* <div className={style.count}>
-        {page}/{totalPages}
-      </div> */}
     </div>
   );
 }

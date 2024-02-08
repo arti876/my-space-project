@@ -1,0 +1,38 @@
+// .wrapper {
+//   position: relative;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 30px 15px;
+// }
+
+// .container {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   gap: 15px;
+// }
+
+// .count {
+//   position: absolute;
+//   bottom: 5%;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
+
+// .page {
+//   font-size: 14px;
+//   &:hover {
+//     color: var(--hover);
+//   }
+// }
+
+// .active {
+//   color: var(--system-colors-primaty-2);
+//   transform: scale(1.5);
+// }
+
+// .disabled {
+//   background-color: transparent !important;
+//   cursor: not-allowed;
+//   opacity: 0.5;
+// }

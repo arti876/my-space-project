@@ -30,3 +30,9 @@
   color: var(--system-colors-primaty-2);
   transform: scale(1.5);
 }
+
+.disabled {
+  background-color: transparent !important;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
