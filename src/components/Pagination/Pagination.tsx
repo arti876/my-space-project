@@ -8,12 +8,14 @@ interface PaginationProps {
   pageQty: number;
   pageNum?: number;
   setPosts: (posts: IPost[]) => void;
+  favoritesPage?: boolean;
 }
 
 export default function Pagination({
   pageQty,
   pageNum,
   setPosts,
+  favoritesPage,
 }: PaginationProps) {
   const { posts } = useAppSelector((state) => state.posts);
   const {
@@ -27,12 +29,21 @@ export default function Pagination({
     gaps,
   } = usePagination({
     contentPerPage: pageQty,
-    count: posts.length,
+    count: favoritesPage
+      ? posts.filter((post) => post.inFavorite === true).length
+      : posts.length,
     pageNum,
   });
 
   useEffect(() => {
-    const postsSlice = posts.slice(firstContentIndex, lastContentIndex);
+    let postsSlice = [];
+    if (favoritesPage) {
+      postsSlice = posts
+        .filter((post) => post.inFavorite === true)
+        .slice(firstContentIndex, lastContentIndex);
+    } else {
+      postsSlice = posts.slice(firstContentIndex, lastContentIndex);
+    }
     setPosts(postsSlice);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts, page]);
@@ -85,4 +96,5 @@ export default function Pagination({
 
 Pagination.defaultProps = {
   pageNum: 1,
+  favoritesPage: false,
 };

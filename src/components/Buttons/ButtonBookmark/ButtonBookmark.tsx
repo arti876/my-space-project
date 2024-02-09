@@ -1,23 +1,23 @@
-import { useState } from 'react';
 import style from './ButtonBookmark.module.scss';
 import Icons from '../../Icons/Icons';
+import { useAppDispatch } from '../../../store/store';
+import { toggleInFavorite } from '../../../store/postSlice';
 
 interface ButtonBookmarkProps {
-  children: JSX.Element;
-  className: string;
+  className?: string;
   idPost: string | number;
+  inFavorite: boolean;
 }
 
 export default function ButtonBookmark({
-  children,
   className,
   idPost,
+  inFavorite,
 }: ButtonBookmarkProps) {
-  const [bookmark, setBookmark] = useState(false);
+  const dispatch = useAppDispatch();
 
   function handleClick() {
-    setBookmark(!bookmark);
-    console.log(idPost);
+    dispatch(toggleInFavorite(idPost));
   }
 
   return (
@@ -28,10 +28,13 @@ export default function ButtonBookmark({
       onClick={handleClick}
     >
       <Icons
-        className={`${style['ico-bookmark']} ${bookmark && style['ico-bookmark-active']}`}
+        className={`${style['ico-bookmark']} ${inFavorite && style['ico-bookmark-active']}`}
         id='bookmark'
       />
-      {children}
     </button>
   );
 }
+
+ButtonBookmark.defaultProps = {
+  className: '',
+};

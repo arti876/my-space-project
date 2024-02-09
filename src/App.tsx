@@ -13,6 +13,7 @@ import PrivateRoute from './Pages/PrivateRoute';
 import TitlePage from './Pages/TitlePage/TitlePage';
 import AppLayout from './Pages/AppLayout/AppLayout';
 import NotFound from './Pages/NotFound/NotFound';
+import Favorites from './Pages/Favorites/Favorites';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ export default function App() {
           <Route path='success' element={<FormSuccess />} />
           <Route path='blog' element={<Blog />}>
             <Route path='all' element={<PostList />} />
-            <Route path='favorites' element={<NotFound />} />
+            <Route path='favorites' element={<Favorites />} />
             <Route path='popular' element={<NotFound />} />
           </Route>
         </Route>

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import style from './PagePost.module.scss';
 import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';

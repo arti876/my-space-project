@@ -12,7 +12,7 @@ interface PostProps {
 }
 
 export default function PostCard({ post, size }: PostProps) {
-  const { id, title, date, description, image } = post;
+  const { id, title, date, description, image, inFavorite } = post;
   const dispatch = useAppDispatch();
 
   let postSize = null;
@@ -61,7 +61,7 @@ export default function PostCard({ post, size }: PostProps) {
       <div className={stylePosrcard['post-card-bottom']}>
         <ButtonLike />
         <div className={stylePosrcard['post-card-bottom-right']}>
-          <ButtonBookmark />
+          <ButtonBookmark inFavorite={inFavorite} idPost={id} />
           <button type='button' name='btn'>
             ...
           </button>

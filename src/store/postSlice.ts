@@ -36,12 +36,11 @@ const postSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    // getPaginPosts(state, action) {
-    //   state.paginPosts = state.posts.slice(
-    //     action.payload.firstContentIndex,
-    //     action.payload.lastContentIndex,
-    //   );
-    // },
+    toggleInFavorite(state, action) {
+      state.posts = state.posts.map((n) =>
+        n.id === action.payload ? { ...n, inFavorite: !n.inFavorite } : n,
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
@@ -59,6 +58,6 @@ const postSlice = createSlice({
   },
 });
 
-// export const { getPaginPosts } = postSlice.actions;
+export const { toggleInFavorite } = postSlice.actions;
 
 export default postSlice.reducer;
