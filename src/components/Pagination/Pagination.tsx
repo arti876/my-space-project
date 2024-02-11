@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';
 import { useAppSelector } from '../../store/store';
@@ -6,18 +6,25 @@ import { IPost } from '../..';
 
 interface PaginationProps {
   pageQty: number;
-  pageNum?: number;
+  pageNum: number;
   setPosts: (posts: IPost[]) => void;
-  favoritesPage?: boolean;
+  favoritesPage: boolean;
 }
 
 export default function Pagination({
   pageQty,
-  pageNum,
+  pageNum = 1,
   setPosts,
-  favoritesPage,
+  favoritesPage = false,
 }: PaginationProps) {
   const { posts } = useAppSelector((state) => state.posts);
+
+  const countFavoritesPage = useMemo(() => {
+    return favoritesPage
+      ? posts.filter((post) => post.inFavorite === true).length
+      : posts.length;
+  }, [favoritesPage, posts]);
+
   const {
     firstContentIndex,
     lastContentIndex,
@@ -29,9 +36,7 @@ export default function Pagination({
     gaps,
   } = usePagination({
     contentPerPage: pageQty,
-    count: favoritesPage
-      ? posts.filter((post) => post.inFavorite === true).length
-      : posts.length,
+    count: countFavoritesPage,
     pageNum,
   });
 
@@ -45,7 +50,6 @@ export default function Pagination({
       postsSlice = posts.slice(firstContentIndex, lastContentIndex);
     }
     setPosts(postsSlice);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts, page]);
 
   return (
@@ -93,8 +97,3 @@ export default function Pagination({
     </div>
   );
 }
-
-Pagination.defaultProps = {
-  pageNum: 1,
-  favoritesPage: false,
-};

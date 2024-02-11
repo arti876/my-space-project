@@ -31,7 +31,7 @@ export default function PagePost() {
             <div className={style.description}>{posts[0].description}</div>
             <div className={style['post-footer-btn']}>
               <ButtonLike className={style['btn-like-background']} />
-              <ButtonBookmark idPost='123' className={style.bookmark}>
+              <ButtonBookmark idPost={id} className={style.bookmark}>
                 <span>Add to favorites</span>
               </ButtonBookmark>
             </div>

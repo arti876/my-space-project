@@ -9,8 +9,7 @@ export default function Favorites() {
   const { posts: postsData } = useAppSelector((state) => state.posts);
   const [posts, setPosts] = useState([]);
 
-  if (postsData.filter((post) => post.inFavorite === true).length === 0)
-    return null;
+  if (!postsData.filter((post) => post.inFavorite).length) return null;
 
   return (
     <>
@@ -23,7 +22,7 @@ export default function Favorites() {
               </div>
             ),
         )}
-      <Pagination favoritesPage pageNum={1} pageQty={5} setPosts={setPosts} />
+      <Pagination favoritesPage pageQty={5} setPosts={setPosts} />
     </>
   );
 }

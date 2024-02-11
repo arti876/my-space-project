@@ -14,10 +14,10 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    toggleModal(state, actions) {
+    toggleModal: (state, actions) => {
       state.inActive = actions.payload;
     },
-    getImageUrl(state, actions) {
+    getImageUrl: (state, actions) => {
       state.imageUrl = actions.payload;
     },
   },

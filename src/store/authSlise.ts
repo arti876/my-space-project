@@ -12,7 +12,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    toggleAuth(state) {
+    toggleAuth: (state) => {
       state.authorized = !state.authorized;
     },
   },

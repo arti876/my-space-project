@@ -42,7 +42,7 @@ export default function PostList() {
             ))}
         </div>
       </div>
-      <Pagination pageNum={1} pageQty={11} setPosts={setPosts} />
+      <Pagination pageQty={11} setPosts={setPosts} />
     </>
   );
 }

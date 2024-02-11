@@ -36,7 +36,7 @@ const postSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    toggleInFavorite(state, action) {
+    toggleInFavorite: (state, action) => {
       state.posts = state.posts.map((n) =>
         n.id === action.payload ? { ...n, inFavorite: !n.inFavorite } : n,
       );
