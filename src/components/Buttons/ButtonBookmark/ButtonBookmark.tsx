@@ -7,12 +7,14 @@ interface ButtonBookmarkProps {
   className?: string;
   idPost: string | number;
   inFavorite: boolean;
+  children: string | JSX.Element;
 }
 
 export default function ButtonBookmark({
   className,
   idPost,
   inFavorite,
+  children = '',
 }: ButtonBookmarkProps) {
   const dispatch = useAppDispatch();
 
@@ -31,6 +33,7 @@ export default function ButtonBookmark({
         className={`${style['ico-bookmark']} ${inFavorite && style['ico-bookmark-active']}`}
         id='bookmark'
       />
+      {children}
     </button>
   );
 }
