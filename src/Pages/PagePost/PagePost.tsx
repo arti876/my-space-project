@@ -9,7 +9,7 @@ import Pagination from '../../components/Pagination/Pagination';
 
 export default function PagePost() {
   const [posts, setPosts] = useState([]);
-  const { id } = useParams();
+  const { idPost } = useParams();
   const { status, error } = useAppSelector((state) => state.posts);
 
   return (
@@ -31,14 +31,14 @@ export default function PagePost() {
             <div className={style.description}>{posts[0].description}</div>
             <div className={style['post-footer-btn']}>
               <ButtonLike className={style['btn-like-background']} />
-              <ButtonBookmark idPost={id} className={style.bookmark}>
+              <ButtonBookmark idPost={idPost} className={style.bookmark}>
                 <span>Add to favorites</span>
               </ButtonBookmark>
             </div>
           </div>
         </div>
       )}
-      <Pagination pageNum={Number(id)} pageQty={1} setPosts={setPosts} />
+      <Pagination pageNum={Number(idPost)} pageQty={1} setPosts={setPosts} />
     </>
   );
 }

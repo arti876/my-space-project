@@ -69,13 +69,13 @@ export default function Hamburger() {
           {authorized && (
             <>
               <User />
-              <LinkHamb to='blog/all' className={style['btn-menu']}>
+              <LinkHamb to={RoutePath.BLOG_ALL} className={style['btn-menu']}>
                 Blog
               </LinkHamb>
-              <LinkHamb to='add-post' className={style['btn-menu']}>
+              <LinkHamb to={RoutePath.ADD_POST} className={style['btn-menu']}>
                 Add post
               </LinkHamb>
-              <LinkHamb to='profile' className={style['btn-menu']}>
+              <LinkHamb to={RoutePath.PROFILE} className={style['btn-menu']}>
                 Profile
               </LinkHamb>
             </>
