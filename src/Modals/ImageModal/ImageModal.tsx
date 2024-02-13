@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useClickAway } from '@uidotdev/usehooks';
 import style from './ImageModal.module.scss';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-import { getImageUrl, toggleModal } from '../../store/modalSlise';
+import { getImageUrl, toggleModal } from '../../store/modalSlice';
 
 export default function ImageModal() {
   const { posts } = useAppSelector((state) => state.posts);

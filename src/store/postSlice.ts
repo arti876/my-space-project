@@ -41,6 +41,11 @@ const postSlice = createSlice({
           : post,
       );
     },
+    // toggleLike: (state, action) => {
+    //   state.posts = state.posts.map((post) =>
+    //     post.id === action.payload ? { ...post, Like: false } : post,
+    //   );
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {

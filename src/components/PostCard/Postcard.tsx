@@ -4,7 +4,7 @@ import { IPost, PostSize } from '../..';
 import ButtonLike from '../Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppDispatch } from '../../store/store';
-import { getImageUrl, toggleModal } from '../../store/modalSlise';
+import { getImageUrl, toggleModal } from '../../store/modalSlice';
 
 interface PostProps {
   post: IPost;

@@ -43,7 +43,12 @@ export default function PagePost() {
         </div>
       )}
 
-      <Pagination pageNum={Number(idPost)} pageQty={1} setPosts={setPosts} />
+      <Pagination
+        pageNum={Number(idPost)}
+        pageQty={1}
+        setPosts={setPosts}
+        pageName='posts'
+      />
     </>
   );
 }

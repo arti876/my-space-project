@@ -6,7 +6,7 @@ import ButtonForm from '../../components/Buttons/ButtonForm/ButtonForm';
 import Form from '../../components/Form/Form';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import { useAppDispatch } from '../../store/store';
-import { toggleAuth } from '../../store/authSlise';
+import { toggleAuth } from '../../store/authSlice';
 import { RoutePath } from '../..';
 
 export default function FormSignIn() {

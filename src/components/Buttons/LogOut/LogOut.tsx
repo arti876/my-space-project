@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../store/store';
-import { toggleAuth } from '../../../store/authSlise';
+import { toggleAuth } from '../../../store/authSlice';
 import { RoutePath } from '../../..';
 
 interface LogOutProps {

@@ -1,4 +1,5 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './Pagination.module.scss';
 import usePagination from '../../hooks/usePagination';
 import { useAppSelector } from '../../store/store';
@@ -9,6 +10,7 @@ interface PaginationProps {
   pageNum: number;
   setPosts: (posts: IPost[]) => void;
   favoritesPage: boolean;
+  pageName: string;
 }
 
 export default function Pagination({
@@ -16,8 +18,10 @@ export default function Pagination({
   pageNum = 1,
   setPosts,
   favoritesPage = false,
+  pageName = '',
 }: PaginationProps) {
   const { posts } = useAppSelector((state) => state.posts);
+  const navigate = useNavigate();
 
   const countFavoritesPage = useMemo(() => {
     return favoritesPage
@@ -51,6 +55,10 @@ export default function Pagination({
     }
     setPosts(postsSlice);
   }, [posts, page]);
+
+  useEffect(() => {
+    if (pageName.length) navigate(`/${pageName}/${page}`);
+  }, [page]);
 
   return (
     <div className={style.wrapper}>
