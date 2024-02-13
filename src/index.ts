@@ -1,3 +1,23 @@
+export enum RoutePath {
+  ROOT = '/',
+  SIGN_IN = 'sign-in',
+  SUCCESS = 'success',
+  BLOG = 'blog',
+  ALL = 'all',
+  FAVORITES = 'favorites',
+  POPULAR = 'popular',
+  // BLOG_ALL = '/blog/all',
+  // BLOG_FAVORITES = '/blog/favorites',
+  // BLOG_POPULAR = '/blog/popular',
+  POSTS = 'posts',
+  POSTS_ID = '/posts/:id',
+  SEARCH_RESULT = 'search-result',
+  ADVANCED_LEVEL = 'advanced-level',
+  // ADD_POST = 'add-post',
+  // PROFILE = 'profile',
+  NOT_FOUND = '*',
+}
+
 export enum PostSize {
   Large = 'large',
   Medium = 'medium',

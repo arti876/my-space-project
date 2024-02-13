@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../store/store';
 import { toggleAuth } from '../../../store/authSlise';
+import { RoutePath } from '../../..';
 
 interface LogOutProps {
   className: string;
@@ -13,7 +14,7 @@ export default function LogOut({ className }: LogOutProps) {
 
   function handleClick() {
     dispatch(toggleAuth());
-    navigate('/', { replace: true });
+    navigate(RoutePath.ROOT, { replace: true });
   }
 
   return (

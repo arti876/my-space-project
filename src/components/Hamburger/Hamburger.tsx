@@ -5,6 +5,7 @@ import BautttonTheme from '../Buttons/ButtonTheme/ButtonTheme';
 import LogOut from '../Buttons/LogOut/LogOut';
 import LinkHamb from '../CustomLink/LinkHamb';
 import { useAppSelector } from '../../store/store';
+import { RoutePath } from '../..';
 
 export default function Hamburger() {
   const [hamburger, setHamburger] = useState<boolean>(false);
@@ -61,7 +62,7 @@ export default function Hamburger() {
       {hamburger && (
         <div className={style['hamburger-menu']}>
           {!authorized && (
-            <LinkHamb to='sign-in' className={style['btn-menu']}>
+            <LinkHamb to={RoutePath.SIGN_IN} className={style['btn-menu']}>
               Sig In
             </LinkHamb>
           )}
@@ -79,10 +80,10 @@ export default function Hamburger() {
               </LinkHamb>
             </>
           )}
-          <LinkHamb to='posts' className={style['btn-menu']}>
+          <LinkHamb to={RoutePath.POSTS} className={style['btn-menu']}>
             Posts
           </LinkHamb>
-          <LinkHamb to='advanced-level' className={style['btn-menu']}>
+          <LinkHamb to={RoutePath.ADVANCED_LEVEL} className={style['btn-menu']}>
             Advanced level
           </LinkHamb>
           <div className={style['btn-theme']}>

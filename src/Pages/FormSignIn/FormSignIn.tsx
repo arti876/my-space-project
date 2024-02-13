@@ -7,6 +7,7 @@ import Form from '../../components/Form/Form';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import { useAppDispatch } from '../../store/store';
 import { toggleAuth } from '../../store/authSlise';
+import { RoutePath } from '../..';
 
 export default function FormSignIn() {
   const [form, setForm] = useState({});
@@ -65,7 +66,7 @@ export default function FormSignIn() {
             >
               Password
             </InputForm>
-            <Link to='/' className={style['forgot-password']}>
+            <Link to={RoutePath.ROOT} className={style['forgot-password']}>
               Forgot password?
             </Link>
           </div>
@@ -79,7 +80,7 @@ export default function FormSignIn() {
             </ButtonForm>
             <div className={style['container-sing-up']}>
               <p>Dont have an account?</p>
-              <Link to='/' className={style['btn-sign-up']}>
+              <Link to={RoutePath.ROOT} className={style['btn-sign-up']}>
                 Sign Up
               </Link>
             </div>

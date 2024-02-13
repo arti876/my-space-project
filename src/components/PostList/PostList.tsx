@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import postListStyle from './PostList.module.scss';
 import PostCard from '../PostCard/Postcard';
-import { PostSize } from '../..';
+import { PostSize, RoutePath } from '../..';
 import { useAppSelector } from '../../store/store';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import Pagination from '../Pagination/Pagination';
@@ -17,7 +17,7 @@ export default function PostList() {
 
   return (
     <>
-      {pathname === '/posts' && <SectionHeader title='Posts' />}
+      {pathname === `/${RoutePath.POSTS}` && <SectionHeader title='Posts' />}
       {status === 'loading' && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className={postListStyle.postList}>

@@ -14,6 +14,7 @@ import TitlePage from './Pages/TitlePage/TitlePage';
 import AppLayout from './Pages/AppLayout/AppLayout';
 import NotFound from './Pages/NotFound/NotFound';
 import Favorites from './Pages/Favorites/Favorites';
+import { RoutePath } from '.';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -24,22 +25,22 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<AppLayout />}>
+      <Route path={RoutePath.ROOT} element={<AppLayout />}>
         <Route index element={<TitlePage />} />
-        <Route path='sign-in' element={<FormSignIn />} />
+        <Route path={RoutePath.SIGN_IN} element={<FormSignIn />} />
         <Route element={<PrivateRoute />}>
-          <Route path='success' element={<FormSuccess />} />
-          <Route path='blog' element={<Blog />}>
-            <Route path='all' element={<PostList />} />
-            <Route path='favorites' element={<Favorites />} />
-            <Route path='popular' element={<NotFound />} />
+          <Route path={RoutePath.SUCCESS} element={<FormSuccess />} />
+          <Route path={RoutePath.BLOG} element={<Blog />}>
+            <Route path={RoutePath.ALL} element={<PostList />} />
+            <Route path={RoutePath.FAVORITES} element={<Favorites />} />
+            <Route path={RoutePath.POPULAR} element={<NotFound />} />
           </Route>
         </Route>
-        <Route path='posts' element={<PostList />} />
-        <Route path='posts/:id' element={<PagePost />} />
-        <Route path='search-result' element={<SearchResult />} />
-        <Route path='advanced-level' element={<AdvancedLevel />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path={RoutePath.POSTS} element={<PostList />} />
+        <Route path={RoutePath.POSTS_ID} element={<PagePost />} />
+        <Route path={RoutePath.SEARCH_RESULT} element={<SearchResult />} />
+        <Route path={RoutePath.ADVANCED_LEVEL} element={<AdvancedLevel />} />
+        <Route path={RoutePath.NOT_FOUND} element={<NotFound />} />
       </Route>
     </Routes>
   );
