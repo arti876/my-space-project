@@ -44,7 +44,10 @@ export default function SearchResult() {
               <div className={style['post-card-bottom']}>
                 <ButtonLike />
                 <div className={style['post-card-bottom-right']}>
-                  <ButtonBookmark />
+                  <ButtonBookmark
+                    idPost={post.id}
+                    inFavorite={post.inFavorite}
+                  />
                   <button type='button' name='btn'>
                     ...
                   </button>

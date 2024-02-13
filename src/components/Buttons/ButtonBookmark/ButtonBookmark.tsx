@@ -4,14 +4,14 @@ import { useAppDispatch } from '../../../store/store';
 import { toggleInFavorite } from '../../../store/postSlice';
 
 interface ButtonBookmarkProps {
-  className?: string;
+  className: string;
   idPost: string | number;
   inFavorite: boolean;
   children: string | JSX.Element;
 }
 
 export default function ButtonBookmark({
-  className,
+  className = '',
   idPost,
   inFavorite,
   children = '',
@@ -19,7 +19,8 @@ export default function ButtonBookmark({
   const dispatch = useAppDispatch();
 
   function handleClick() {
-    dispatch(toggleInFavorite(idPost));
+    const idPostNumber = Number(idPost);
+    dispatch(toggleInFavorite(idPostNumber));
   }
 
   return (
@@ -37,7 +38,3 @@ export default function ButtonBookmark({
     </button>
   );
 }
-
-ButtonBookmark.defaultProps = {
-  className: '',
-};

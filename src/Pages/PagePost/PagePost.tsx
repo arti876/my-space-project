@@ -31,13 +31,18 @@ export default function PagePost() {
             <div className={style.description}>{posts[0].description}</div>
             <div className={style['post-footer-btn']}>
               <ButtonLike className={style['btn-like-background']} />
-              <ButtonBookmark idPost={idPost} className={style.bookmark}>
+              <ButtonBookmark
+                idPost={idPost}
+                className={style.bookmark}
+                inFavorite={posts[0].inFavorite}
+              >
                 <span>Add to favorites</span>
               </ButtonBookmark>
             </div>
           </div>
         </div>
       )}
+
       <Pagination pageNum={Number(idPost)} pageQty={1} setPosts={setPosts} />
     </>
   );

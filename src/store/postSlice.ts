@@ -4,14 +4,12 @@ import { IPost } from '..';
 
 interface IPostsState {
   posts: IPost[];
-  paginPosts: IPost[];
   status: string | null;
   error: unknown;
 }
 
 const initialState: IPostsState = {
   posts: [],
-  paginPosts: [],
   status: null,
   error: null,
 };
@@ -37,8 +35,10 @@ const postSlice = createSlice({
   initialState,
   reducers: {
     toggleInFavorite: (state, action) => {
-      state.posts = state.posts.map((n) =>
-        n.id === action.payload ? { ...n, inFavorite: !n.inFavorite } : n,
+      state.posts = state.posts.map((post) =>
+        post.id === action.payload
+          ? { ...post, inFavorite: !post.inFavorite }
+          : post,
       );
     },
   },
