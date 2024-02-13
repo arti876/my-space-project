@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import stylePosrcard from './Postcard.module.scss';
 import { IPost, PostSize } from '../..';
-import ButtonLike from '../Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppDispatch } from '../../store/store';
 import { getImageUrl, toggleModal } from '../../store/modalSlice';
+import Like from '../Like';
 
 interface PostProps {
   post: IPost;
@@ -59,7 +59,11 @@ export default function PostCard({ post, size }: PostProps) {
         </button>
       </div>
       <div className={stylePosrcard['post-card-bottom']}>
-        <ButtonLike />
+        <div className={stylePosrcard['like-container']}>
+          <Like postId={id} type='like' color='success' />
+          <Like postId={id} type='dislike' color='error' />
+        </div>
+
         <div className={stylePosrcard['post-card-bottom-right']}>
           <ButtonBookmark inFavorite={inFavorite} idPost={id} />
           <button type='button' name='btn'>

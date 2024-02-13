@@ -41,11 +41,14 @@ const postSlice = createSlice({
           : post,
       );
     },
-    // toggleLike: (state, action) => {
-    //   state.posts = state.posts.map((post) =>
-    //     post.id === action.payload ? { ...post, Like: false } : post,
-    //   );
-    // },
+    addLikeCount: (state, action) => {
+      state.posts = state.posts.map((post) =>
+        post.id === action.payload.id
+          ? { ...post, [action.payload.type]: action.payload.count }
+          : post,
+      );
+      console.log(state.posts);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
@@ -63,6 +66,6 @@ const postSlice = createSlice({
   },
 });
 
-export const { toggleInFavorite } = postSlice.actions;
+export const { toggleInFavorite, addLikeCount } = postSlice.actions;
 
 export default postSlice.reducer;

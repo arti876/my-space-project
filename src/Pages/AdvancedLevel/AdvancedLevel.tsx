@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import style from './AdvancedLevel.module.scss';
-import InputCheckbox from '../../components/Inputs/InputCheckbox/InputCheckbox';
-import InputRadio from '../../components/Inputs/InputRadio/InputRadio';
-import InputSwitch from '../../components/Inputs/InputSwitch/InputSwitch';
-import InputRange from '../../components/Inputs/InputRange/InputRange';
-import Basket from '../../components/Basket/Basket';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
+import Basket from '../../components/Basket/Basket';
+import InputRange from '../../components/Inputs/InputRange/InputRange';
+import InputSwitch from '../../components/Inputs/InputSwitch/InputSwitch';
+import InputRadio from '../../components/Inputs/InputRadio/InputRadio';
+import InputCheckbox from '../../components/Inputs/InputCheckbox/InputCheckbox';
+import style from './AdvancedLevel.module.scss';
 
 interface CheckboxProps {
   checkbox1: boolean | null;
