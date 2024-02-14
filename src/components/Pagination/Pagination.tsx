@@ -69,13 +69,15 @@ export default function Pagination({
       >
         ⭅ Previous
       </button>
-      <button
-        type='button'
-        onClick={() => setPage(1)}
-        className={`${style.page} ${page === 1 && style.active}`}
-      >
-        1
-      </button>
+      {totalPages > 1 && (
+        <button
+          type='button'
+          onClick={() => setPage(1)}
+          className={`${style.page} ${page === 1 && style.active}`}
+        >
+          1
+        </button>
+      )}
       {gaps.before ? '...' : null}
       {gaps.paginationGroup.map((el) => (
         <button

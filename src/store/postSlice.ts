@@ -44,10 +44,12 @@ const postSlice = createSlice({
     addLikeCount: (state, action) => {
       state.posts = state.posts.map((post) =>
         post.id === action.payload.id
-          ? { ...post, [action.payload.type]: action.payload.count }
+          ? {
+              ...post,
+              [action.payload.type]: action.payload.count,
+            }
           : post,
       );
-      console.log(state.posts);
     },
   },
   extraReducers: (builder) => {

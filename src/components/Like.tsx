@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { IconButton, Badge } from '@mui/material';
 import { ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
 import { useAppDispatch } from '../store/store';
@@ -8,11 +8,13 @@ interface LikeProps {
   color: string;
   type: string;
   postId: number | string;
+  currentCount: number;
 }
 
-export default function Like({ color, type, postId }: LikeProps) {
-  const [count, setCount] = React.useState(0);
+export default function Like({ color, type, postId, currentCount }: LikeProps) {
+  const [count, setCount] = useState(0);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (count) {
       dispatch(addLikeCount({ type, id: postId, count }));
@@ -28,7 +30,7 @@ export default function Like({ color, type, postId }: LikeProps) {
     >
       <Badge
         color={color}
-        badgeContent={count}
+        badgeContent={currentCount}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right',

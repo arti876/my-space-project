@@ -12,7 +12,8 @@ interface PostProps {
 }
 
 export default function PostCard({ post, size }: PostProps) {
-  const { id, title, date, description, image, inFavorite } = post;
+  const { id, title, date, description, image, inFavorite, like, dislike } =
+    post;
   const dispatch = useAppDispatch();
 
   let postSize = null;
@@ -60,8 +61,13 @@ export default function PostCard({ post, size }: PostProps) {
       </div>
       <div className={stylePosrcard['post-card-bottom']}>
         <div className={stylePosrcard['like-container']}>
-          <Like postId={id} type='like' color='success' />
-          <Like postId={id} type='dislike' color='error' />
+          <Like postId={id} type='like' color='success' currentCount={like} />
+          <Like
+            postId={id}
+            type='dislike'
+            color='error'
+            currentCount={dislike}
+          />
         </div>
 
         <div className={stylePosrcard['post-card-bottom-right']}>
