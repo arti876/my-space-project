@@ -1,8 +1,30 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, TextField } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  FormHelperText,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import style from './Testing.module.scss';
 
 export default function Testing() {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+  };
+
   const {
     register,
     handleSubmit,
@@ -22,6 +44,7 @@ export default function Testing() {
         <div className={style.itemInput}>
           <TextField
             error={errors.firstName && true}
+            helperText='Incorrect entry.'
             type='text'
             id='first-name'
             label='First Name'
@@ -36,6 +59,7 @@ export default function Testing() {
         </div>
         <div className={style.itemInput}>
           <TextField
+            sx={{ fontSize: 24 }}
             error={errors.lastName && true}
             type='text'
             id='last-name'
@@ -92,6 +116,27 @@ export default function Testing() {
           Sign Up
         </Button>
       </form>
+      <FormControl sx={{ width: '100%' }} variant='outlined'>
+        <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
+        <OutlinedInput
+          id='outlined-adornment-password'
+          type={showPassword ? 'text' : 'password'}
+          endAdornment={
+            <IconButton
+              aria-label='toggle password visibility'
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge='end'
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          }
+          label='Password'
+        />
+        <FormHelperText id='my-helper-text'>
+          We'll never share your email.
+        </FormHelperText>
+      </FormControl>
     </div>
   );
 }
