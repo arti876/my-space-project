@@ -4,6 +4,7 @@ import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppSelector } from '../../store/store';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
+import Like from '../../components/Like';
 
 export default function SearchResult() {
   const { status, error, posts } = useAppSelector((state) => state.posts);
@@ -42,7 +43,20 @@ export default function SearchResult() {
                 </div>
               </div>
               <div className={style['post-card-bottom']}>
-                <ButtonLike />
+                <div className={style['like-container']}>
+                  <Like
+                    postId={post.id}
+                    type='like'
+                    color='success'
+                    currentCount={post.like}
+                  />
+                  <Like
+                    postId={post.id}
+                    type='dislike'
+                    color='error'
+                    currentCount={post.dislike}
+                  />
+                </div>
                 <div className={style['post-card-bottom-right']}>
                   <ButtonBookmark
                     idPost={post.id}

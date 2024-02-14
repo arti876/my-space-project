@@ -6,6 +6,7 @@ import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookma
 import { useAppSelector } from '../../store/store';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import Pagination from '../../components/Pagination/Pagination';
+import Like from '../../components/Like';
 
 export default function PagePost() {
   const [posts, setPosts] = useState([]);
@@ -30,7 +31,20 @@ export default function PagePost() {
             </div>
             <div className={style.description}>{posts[0].description}</div>
             <div className={style['post-footer-btn']}>
-              <ButtonLike className={style['btn-like-background']} />
+              <div className={style['like-container']}>
+                <Like
+                  postId={posts[0].id}
+                  type='like'
+                  color='success'
+                  currentCount={posts[0].like}
+                />
+                <Like
+                  postId={posts[0].id}
+                  type='dislike'
+                  color='error'
+                  currentCount={posts[0].dislike}
+                />
+              </div>
               <ButtonBookmark
                 idPost={idPost}
                 className={style.bookmark}
