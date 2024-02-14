@@ -14,6 +14,20 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import style from './Testing.module.scss';
 
+const styles = {
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    width: 300,
+    margin: 100,
+  },
+  resize: {
+    fontSize: 50,
+  },
+};
+
 export default function Testing() {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -40,24 +54,26 @@ export default function Testing() {
 
   return (
     <div className='wrapper-global'>
-      <form className={style.container} onSubmit={handleSubmit(onSubmit)}>
-        <div className={style.itemInput}>
+      {/* <form className={style.container} onSubmit={handleSubmit(onSubmit)}> */}
+
+      <div className={style.theme}>
+        <FormControl
+          sx={{ mt: 5, width: '350px', display: 'flex', gap: 4.5 }}
+          variant='outlined'
+        >
           <TextField
             error={errors.firstName && true}
-            helperText='Incorrect entry.'
             type='text'
             id='first-name'
             label='First Name'
             variant='outlined'
             fullWidth
+            helperText={errors?.firstName?.message}
             {...register('firstName', {
               required: 'Required field',
               minLength: { value: 2, message: 'Minimum 2 characters' },
             })}
           />
-          {errors?.firstName && <p>{errors?.firstName?.message}</p>}
-        </div>
-        <div className={style.itemInput}>
           <TextField
             sx={{ fontSize: 24 }}
             error={errors.lastName && true}
@@ -66,14 +82,12 @@ export default function Testing() {
             label='Last Name'
             variant='outlined'
             fullWidth
+            helperText={errors?.lastName?.message}
             {...register('lastName', {
               required: 'Required field',
               minLength: { value: 2, message: 'Minimum 2 characters' },
             })}
           />
-          {errors?.lastName && <p>{errors?.lastName?.message}</p>}
-        </div>
-        <div className={style.itemInput}>
           <TextField
             error={errors.email && true}
             type='text'
@@ -81,6 +95,7 @@ export default function Testing() {
             label='Email'
             variant='outlined'
             fullWidth
+            helperText={errors?.email?.message}
             {...register('email', {
               required: 'Required field',
               pattern: {
@@ -89,54 +104,46 @@ export default function Testing() {
               },
             })}
           />
-          {errors?.email && <p>{errors?.email?.message}</p>}
-        </div>
-        <div className={style.itemInput}>
           <TextField
             error={errors.password && true}
-            type='password'
+            type={showPassword ? 'text' : 'password'}
             id='password'
             label='Password'
             variant='outlined'
             fullWidth
+            helperText={errors?.password?.message}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                  aria-label='toggle password visibility'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge='end'
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              ),
+            }}
             {...register('password', {
               required: 'Required field',
               minLength: { value: 5, message: 'Minimum 5 characters' },
             })}
           />
-          {errors?.password && <p>{errors?.password?.message}</p>}
-        </div>
-        <Button
-          type='submit'
-          variant='contained'
-          size='large'
-          fullWidth
-          disabled={!isValid}
-        >
-          Sign Up
-        </Button>
-      </form>
-      <FormControl sx={{ width: '100%' }} variant='outlined'>
-        <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
-        <OutlinedInput
-          id='outlined-adornment-password'
-          type={showPassword ? 'text' : 'password'}
-          endAdornment={
-            <IconButton
-              aria-label='toggle password visibility'
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              edge='end'
-            >
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-          }
-          label='Password'
-        />
-        <FormHelperText id='my-helper-text'>
-          We'll never share your email.
-        </FormHelperText>
-      </FormControl>
+          <Button
+            type='submit'
+            variant='contained'
+            size='large'
+            fullWidth
+            disabled={!isValid}
+          >
+            Sign Up
+          </Button>
+        </FormControl>
+      </div>
     </div>
   );
 }
+
+// <FormHelperText id='my-helper-text'>
+// We'll never share your email.
+// </FormHelperText>
