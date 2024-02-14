@@ -15,6 +15,7 @@ export enum RoutePath {
   ADVANCED_LEVEL = 'advanced-level',
   ADD_POST = 'add-post',
   PROFILE = 'profile',
+  TESTING = 'testing',
   NOT_FOUND = '*',
 }
 
