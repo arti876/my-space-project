@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import style from './PagePost.module.scss';
-import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppSelector } from '../../store/store';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';

@@ -124,3 +124,8 @@ https://mui.com/material-ui/getting-started/installation/
 
 npm install @mui/material @emotion/react @emotion/styled @mui/styled-engine-sc styled-components @fontsource/roboto @mui/icons-material
 
+
+// с большой кроме первой удалить пробелы 'first name'.replace(/(^s|\s)\S/g, function(a) {return a.toUpperCase()}).replaceAll(' ', '')
+// с большой все 'first name'.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})
+// тире 'first name'.replace(/(\s?-\s?)|\s/g, '-')
+

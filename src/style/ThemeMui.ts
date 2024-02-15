@@ -14,6 +14,38 @@ const theme = createTheme({
       contrastText: '#47008F',
     },
   },
+  components: {
+    MuiInputBase: {
+      defaultProps: {
+        sx: {
+          fontSize: '14px',
+        },
+      },
+    },
+    MuiInputLabel: {
+      defaultProps: {
+        sx: {
+          fontSize: '1.5rem',
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        sx: {
+          fontSize: '14px',
+        },
+      },
+    },
+    MuiFormHelperText: {
+      defaultProps: {
+        sx: {
+          top: '100%',
+          position: 'absolute',
+          fontSize: '12px',
+        },
+      },
+    },
+  },
 });
 
 export default theme;

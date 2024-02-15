@@ -1,6 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
 import style from './SearchResult.module.scss';
-import ButtonLike from '../../components/Buttons/ButtonLike/ButtonLike';
 import ButtonBookmark from '../../components/Buttons/ButtonBookmark/ButtonBookmark';
 import { useAppSelector } from '../../store/store';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
