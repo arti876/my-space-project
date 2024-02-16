@@ -1,31 +1,15 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { Button, IconButton, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-
-interface IStyleMui {
-  form: object;
-  Visibility: object;
-}
-
-interface IformData {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-}
-
-const styleMui: IStyleMui = {
-  form: {
-    maxWidth: '350px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '35px',
-  },
-  Visibility: {
-    fontSize: '24px',
-  },
-};
+import {
+  firstNameValidation,
+  lastNameValidation,
+  emailValidation,
+  passwordValidation,
+} from './validation';
+import { IformData } from '.';
+import styleMui from './style';
 
 export default function Testing() {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,92 +23,104 @@ export default function Testing() {
   };
 
   const {
-    register,
+    control,
+    // register,
     handleSubmit,
     formState: { errors, isValid },
     reset,
-  } = useForm({ mode: 'onBlur' });
+  } = useForm<IformData>({ mode: 'onBlur' });
 
-  const onSubmit = (formData: IformData) => {
+  const onSubmit: SubmitHandler<IformData> = (formData) => {
     console.log(formData);
     reset();
   };
 
+  console.log(errors);
+
   return (
     <div className='wrapper-global'>
       <form style={styleMui.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          error={errors.firstName && true}
-          type='text'
-          id='first-name'
-          label='First Name'
-          variant='outlined'
-          helperText={errors?.firstName?.message}
-          {...register('firstName', {
-            required: 'Required field',
-            minLength: { value: 2, message: 'Minimum 2 characters' },
-          })}
+        <Controller
+          control={control}
+          name='firstName'
+          rules={firstNameValidation}
+          render={({ field: { onChange, onBlur } }) => (
+            <TextField
+              type='text'
+              label='First Name'
+              onChange={(e) => onChange(e)}
+              onBlur={onBlur}
+              helperText={errors?.firstName?.message}
+              error={!!errors?.firstName}
+            />
+          )}
         />
-        <TextField
-          error={errors.lastName && true}
-          type='text'
-          id='last-name'
-          label='Last Name'
-          variant='outlined'
-          helperText={errors?.lastName?.message}
-          {...register('lastName', {
-            required: 'Required field',
-            minLength: { value: 2, message: 'Minimum 2 characters' },
-          })}
+        <Controller
+          control={control}
+          name='lastName'
+          rules={lastNameValidation}
+          render={({ field: { onChange, onBlur } }) => (
+            <TextField
+              type='text'
+              label='Last Name'
+              onChange={(e) => onChange(e)}
+              onBlur={onBlur}
+              helperText={errors?.lastName?.message}
+              error={!!errors?.lastName}
+            />
+          )}
         />
-        <TextField
-          error={errors.email && true}
-          type='text'
-          id='email'
-          label='Email'
-          variant='outlined'
-          helperText={errors?.email?.message}
-          {...register('email', {
-            required: 'Required field',
-            pattern: {
-              value: /^[A-Za-z0-9+_.-]+@(.+)$/i,
-              message: 'Enter the correct name',
-            },
-          })}
+        <Controller
+          control={control}
+          name='email'
+          rules={emailValidation}
+          render={({ field: { onChange, onBlur } }) => (
+            <TextField
+              type='text'
+              label='Email'
+              onChange={(e) => onChange(e)}
+              onBlur={onBlur}
+              helperText={errors?.email?.message}
+              error={!!errors?.email}
+            />
+          )}
         />
-        <TextField
-          error={errors.password && true}
-          type={showPassword ? 'text' : 'password'}
-          id='password'
-          label='Password'
-          variant='outlined'
-          helperText={errors?.password?.message}
-          InputProps={{
-            endAdornment: (
-              <IconButton
-                aria-label='toggle password visibility'
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge='end'
-              >
-                {showPassword ? (
-                  <VisibilityOff sx={styleMui.Visibility} />
-                ) : (
-                  <Visibility sx={styleMui.Visibility} />
-                )}
-              </IconButton>
-            ),
-          }}
-          {...register('password', {
-            required: 'Required field',
-            minLength: { value: 5, message: 'Minimum 5 characters' },
-          })}
+        <Controller
+          control={control}
+          name='password'
+          rules={passwordValidation}
+          render={({ field: { onChange, onBlur } }) => (
+            <TextField
+              type={showPassword ? 'text' : 'password'}
+              label='Password'
+              onChange={(e) => onChange(e)}
+              onBlur={onBlur}
+              helperText={errors?.password?.message}
+              error={!!errors?.password}
+              InputProps={{
+                endAdornment: (
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge='end'
+                  >
+                    {showPassword ? (
+                      <VisibilityOff sx={styleMui.Visibility} />
+                    ) : (
+                      <Visibility sx={styleMui.Visibility} />
+                    )}
+                  </IconButton>
+                ),
+              }}
+            />
+          )}
         />
         <Button
           type='submit'
           variant='contained'
           size='large'
-          disabled={!isValid}
+          // disabled={!isValid}
         >
           Sign Up
         </Button>
