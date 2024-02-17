@@ -22,26 +22,25 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action) => {
-      // if (action.payload.firstName.length && action.payload.lastName.length) {
+    registerUser: (state, action) => {
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
-      // }
+      state.email = action.payload.email;
+      state.token = action.payload.token;
+      state.id = action.payload.id;
+    },
+    loginUser: (state, action) => {
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
       state.isAuth = action.payload.isAuth;
     },
     removeUser: (state) => {
-      state.firstName = '';
-      state.lastName = '';
-      state.email = '';
-      state.token = '';
-      state.id = '';
+      state.isAuth = false;
     },
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { registerUser, loginUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;

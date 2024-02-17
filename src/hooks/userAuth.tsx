@@ -6,7 +6,6 @@ export default function useAuth() {
   );
 
   return {
-    // isAuth: !!email,
     firstName,
     lastName,
     email,

@@ -3,11 +3,10 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import FormSignUp from '../FormSignUp/FormSignUp';
 import { useAppDispatch } from '../../store/store';
-import { setUser } from '../../store/userSlice';
+import { registerUser } from '../../store/userSlice';
 import { RoutePath } from '../..';
 
 export default function SignUp() {
-  // const { email, password } = useAuth();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ export default function SignUp() {
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         dispatch(
-          setUser({
+          registerUser({
             firstName,
             lastName,
             id: user.uid,

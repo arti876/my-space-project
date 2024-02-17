@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   firstNameValidation,
   lastNameValidation,
@@ -26,7 +26,6 @@ interface FormSignUpProps {
 
 export default function FormSignUp({ location, handleClick }: FormSignUpProps) {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -53,9 +52,7 @@ export default function FormSignUp({ location, handleClick }: FormSignUpProps) {
     password,
   }) => {
     handleClick(email, password, firstName, lastName);
-
     reset();
-    // navigate('/success');
   };
 
   return (

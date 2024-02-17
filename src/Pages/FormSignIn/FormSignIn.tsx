@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import FormSignUp from '../FormSignUp/FormSignUp';
 import { useAppDispatch } from '../../store/store';
-import { setUser } from '../../store/userSlice';
+import { loginUser } from '../../store/userSlice';
 import { RoutePath } from '../..';
 
 export default function FormSignIn() {
@@ -14,10 +14,9 @@ export default function FormSignIn() {
   function handleLogin(email: string, password: string) {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      // .then(console.log)
       .then(({ user, _tokenResponse }) => {
         dispatch(
-          setUser({
+          loginUser({
             id: user.uid,
             email: user.email,
             token: user.accessToken,

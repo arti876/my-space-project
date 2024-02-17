@@ -4,14 +4,14 @@ import User from '../User/User';
 import BautttonTheme from '../Buttons/ButtonTheme/ButtonTheme';
 import LogOut from '../Buttons/LogOut/LogOut';
 import LinkHamb from '../CustomLink/LinkHamb';
-import { useAppSelector } from '../../store/store';
 import { RoutePath } from '../..';
+import useAuth from '../../hooks/userAuth';
 
 export default function Hamburger() {
   const [hamburger, setHamburger] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   const refHamb = useRef<HTMLButtonElement | null>(null);
-  const { authorized } = useAppSelector((state) => state.auth);
+  const { isAuth, firstName, lastName } = useAuth();
 
   function handleClick(e: Event) {
     const target = e.target as HTMLButtonElement;
@@ -61,14 +61,14 @@ export default function Hamburger() {
       </button>
       {hamburger && (
         <div className={style['hamburger-menu']}>
-          {!authorized && (
+          {!isAuth && (
             <LinkHamb to={RoutePath.SIGN_IN} className={style['btn-menu']}>
               Sig In
             </LinkHamb>
           )}
-          {authorized && (
+          {isAuth && (
             <>
-              <User />
+              <User firstName={firstName} lastName={lastName} />
               <LinkHamb to={RoutePath.BLOG_ALL} className={style['btn-menu']}>
                 Blog
               </LinkHamb>
@@ -89,7 +89,7 @@ export default function Hamburger() {
           <div className={style['btn-theme']}>
             <BautttonTheme />
           </div>
-          {authorized && (
+          {isAuth && (
             <LogOut className={`${style['btn-menu']} ${style.logout}`} />
           )}
         </div>

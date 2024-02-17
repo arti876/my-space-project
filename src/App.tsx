@@ -16,7 +16,7 @@ import NotFound from './Pages/NotFound/NotFound';
 import Favorites from './Pages/Favorites/Favorites';
 import { RoutePath } from '.';
 import SignUp from './Pages/SignUp/SignUn';
-import useAuth from './hooks/userAuth';
+import Profile from './Pages/Profile/Profile';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -24,12 +24,6 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
-
-  const { firstName, lastName, email, isAuth } = useAuth();
-
-  useEffect(() => {
-    console.log(firstName, lastName, email, isAuth);
-  }, [firstName, lastName, email, isAuth]);
 
   return (
     <Routes>
@@ -44,6 +38,7 @@ export default function App() {
             <Route path={RoutePath.FAVORITES} element={<Favorites />} />
             <Route path={RoutePath.POPULAR} element={<NotFound />} />
           </Route>
+          <Route path={RoutePath.PROFILE} element={<Profile />} />
         </Route>
         <Route path={RoutePath.POSTS} element={<PostList />} />
         <Route path={RoutePath.POSTS_ID} element={<PagePost />} />
