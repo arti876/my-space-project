@@ -1,17 +1,6 @@
-import { TextField, InputProps as InputPropsMui } from '@mui/material';
-import { Control, Controller } from 'react-hook-form';
-import { IformData, NameType } from '.';
-
-interface ControllerTextFieldProps {
-  control: Control<IformData>;
-  name: NameType;
-  rules: object;
-  label: string;
-  helperText: string | undefined;
-  error: boolean;
-  type?: string;
-  InputProps?: InputPropsMui;
-}
+import { TextField } from '@mui/material';
+import { Controller } from 'react-hook-form';
+import { ControllerTextFieldProps } from '.';
 
 export default function ControllerTextField({
   control,
@@ -20,8 +9,8 @@ export default function ControllerTextField({
   label,
   helperText,
   error,
-  type,
-  InputProps,
+  type = 'text',
+  InputProps = {},
 }: ControllerTextFieldProps) {
   return (
     <Controller
@@ -43,8 +32,3 @@ export default function ControllerTextField({
     />
   );
 }
-
-ControllerTextField.defaultProps = {
-  type: 'text',
-  InputProps: null,
-};
