@@ -104,7 +104,7 @@ export default function FormSignUp({ location }: FormSignUpProps) {
           }}
         />
         {location === RoutePath.SIGN_IN && (
-          <Link to={RoutePath.ROOT} className='link-forgot-password'>
+          <Link to={RoutePath.NOT_FOUND} className='link-forgot-password'>
             Forgot password?
           </Link>
         )}
@@ -116,7 +116,7 @@ export default function FormSignUp({ location }: FormSignUpProps) {
           size='large'
           disabled={!isValid}
         >
-          Sign Up
+          {location === RoutePath.SIGN_IN ? 'Sign In' : 'Sign Up'}
         </Button>
         {location === RoutePath.SIGN_IN && (
           <div className='container-link-sing-up'>
