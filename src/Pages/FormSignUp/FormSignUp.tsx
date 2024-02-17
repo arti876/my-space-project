@@ -16,7 +16,12 @@ import { RoutePath } from '../..';
 
 interface FormSignUpProps {
   location: string;
-  handleClick: (email: string, password: string) => void;
+  handleClick: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+  ) => void;
 }
 
 export default function FormSignUp({ location, handleClick }: FormSignUpProps) {
@@ -47,8 +52,8 @@ export default function FormSignUp({ location, handleClick }: FormSignUpProps) {
     email,
     password,
   }) => {
-    console.log(firstName, lastName, email, password);
-    handleClick(email, password);
+    handleClick(email, password, firstName, lastName);
+
     reset();
     // navigate('/success');
   };

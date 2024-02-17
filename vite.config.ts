@@ -1,19 +1,25 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+
+const cherryPickedKeys = [
+  'REACT_APP_FIREBASE_API_KEY',
+  'REACT_APP_FIREBASE_AUTH_DOMAIN',
+  'REACT_APP_FIREBASE_PROJECT_ID',
+  'REACT_APP_FIREBASE_STORAGE_BUCKET',
+  'REACT_APP_FIREBASE_MESSAGING_SENDER_ID',
+  'REACT_APP_FIREBASE_APP_ID',
+];
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  // base: '/my-space-project',
-  plugins: [react()],
-  // resolve: {
-  //   alias: {
-  //     components: '/src/components',
-  //     hooks: '/src/hooks',
-  //     Pages: '/src/Pages',
-  //     style: '/src/style',
-  //     types: '/src/types',
-  //     utils: '/src/utils',
-  //   },
-  // },
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const processEnv = {};
+  cherryPickedKeys.forEach((key) => (processEnv[key] = env[key]));
+
+  return {
+    define: {
+      'process.env': processEnv,
+    },
+    plugins: [react()],
+  };
 });

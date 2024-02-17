@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAppSelector } from '../store/store';
 import { RoutePath } from '..';
+import useAuth from '../hooks/userAuth';
 
 export default function PrivateRoute() {
-  const { authorized } = useAppSelector((state) => state.auth);
+  const { isAuth } = useAuth();
 
-  return authorized ? <Outlet /> : <Navigate to={RoutePath.SIGN_IN} />;
+  return isAuth ? <Outlet /> : <Navigate to={RoutePath.SIGN_IN} />;
 }

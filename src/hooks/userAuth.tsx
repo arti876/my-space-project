@@ -1,17 +1,17 @@
 import { useAppSelector } from '../store/store';
 
 export default function useAuth() {
-  const { firstName, lastName, email, password, id, token } = useAppSelector(
+  const { firstName, lastName, email, id, token, isAuth } = useAppSelector(
     (state) => state.user,
   );
 
   return {
-    isAuth: !!email,
+    // isAuth: !!email,
     firstName,
     lastName,
     email,
-    password,
     id,
     token,
+    isAuth,
   };
 }

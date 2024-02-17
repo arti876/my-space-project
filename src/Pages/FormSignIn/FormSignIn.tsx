@@ -1,19 +1,34 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import FormSignUp from '../FormSignUp/FormSignUp';
 import { useAppDispatch } from '../../store/store';
 import { setUser } from '../../store/userSlice';
+import { RoutePath } from '../..';
 
 export default function FormSignIn() {
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  function handleLogin(email, password) {
+  function handleLogin(email: string, password: string) {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(console.log)
-      .catch(console.error);
+      // .then(console.log)
+      .then(({ user, _tokenResponse }) => {
+        dispatch(
+          setUser({
+            id: user.uid,
+            email: user.email,
+            token: user.accessToken,
+            isAuth: _tokenResponse.registered,
+          }),
+        );
+        navigate(RoutePath.SUCCESS);
+      })
+      .catch((e) => {
+        alert(e);
+      });
   }
 
   return (

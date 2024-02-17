@@ -1,20 +1,40 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import FormSignUp from '../FormSignUp/FormSignUp';
 import { useAppDispatch } from '../../store/store';
-import useAuth from '../../hooks/userAuth';
+import { setUser } from '../../store/userSlice';
+import { RoutePath } from '../..';
 
 export default function SignUp() {
-  const { email, password } = useAuth();
+  // const { email, password } = useAuth();
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  function handleRegister() {
+  function handleRegister(
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+  ) {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-      .then(console.log)
-      .catch(console.error);
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            firstName,
+            lastName,
+            id: user.uid,
+            email: user.email,
+            token: user.accessToken,
+          }),
+        );
+        navigate(RoutePath.SIGN_IN);
+      })
+      .catch((e) => {
+        alert(e);
+      });
   }
 
   return (
