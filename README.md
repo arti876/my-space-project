@@ -129,3 +129,7 @@ npm install @mui/material @emotion/react @emotion/styled @mui/styled-engine-sc s
 // с большой все 'first name'.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()})
 // тире 'first name'.replace(/(\s?-\s?)|\s/g, '-')
 
+npm install firebase
+npm install -g firebase-tools
+
+
