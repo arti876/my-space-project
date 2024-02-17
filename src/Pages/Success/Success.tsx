@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import style from './FormSuccess.module.scss';
+import style from './Success.module.scss';
 import Form from '../../components/Form/Form';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import { RoutePath } from '../..';
 
-export default function FormSuccess() {
+export default function Success() {
   return (
     <>
       <SectionHeader title='Success' />

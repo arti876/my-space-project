@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
-import FormSignUp from '../FormSignUp/FormSignUp';
+import FormAuth from '../../components/FormAuth/FormAuth';
 import { useAppDispatch } from '../../store/store';
 import { registerUser } from '../../store/userSlice';
 import { RoutePath } from '../..';
@@ -39,7 +39,7 @@ export default function SignUp() {
   return (
     <div className='wrapper-global'>
       <SectionHeader title='Sign In' />
-      <FormSignUp location={location.pathname} handleClick={handleRegister} />
+      <FormAuth location={location.pathname} handleClick={handleRegister} />
     </div>
   );
 }

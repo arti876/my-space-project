@@ -14,7 +14,7 @@ import styleMui from './style';
 import ControllerTextField from './ControllerTextField';
 import { RoutePath } from '../..';
 
-interface FormSignUpProps {
+interface FormAuthProps {
   location: string;
   handleClick: (
     email: string,
@@ -24,7 +24,7 @@ interface FormSignUpProps {
   ) => void;
 }
 
-export default function FormSignUp({ location, handleClick }: FormSignUpProps) {
+export default function FormAuth({ location, handleClick }: FormAuthProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);

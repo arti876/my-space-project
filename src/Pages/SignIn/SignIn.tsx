@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
-import FormSignUp from '../FormSignUp/FormSignUp';
+import FormAuth from '../../components/FormAuth/FormAuth';
 import { useAppDispatch } from '../../store/store';
 import { loginUser } from '../../store/userSlice';
 import { RoutePath } from '../..';
 
-export default function FormSignIn() {
+export default function SignIn() {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function FormSignIn() {
   return (
     <div className='wrapper-global'>
       <SectionHeader title='Sign In' />
-      <FormSignUp location={location.pathname} handleClick={handleLogin} />
+      <FormAuth location={location.pathname} handleClick={handleLogin} />
     </div>
   );
 }
