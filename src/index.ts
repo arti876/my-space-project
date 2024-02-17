@@ -15,7 +15,6 @@ export enum RoutePath {
   SEARCH_RESULT = 'search-result',
   ADVANCED_LEVEL = 'advanced-level',
   ADD_POST = 'add-post',
-  PROFILE = 'profile',
   NOT_FOUND = '*',
 }
 

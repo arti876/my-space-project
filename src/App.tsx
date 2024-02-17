@@ -38,7 +38,6 @@ export default function App() {
             <Route path={RoutePath.FAVORITES} element={<Favorites />} />
             <Route path={RoutePath.POPULAR} element={<NotFound />} />
           </Route>
-          <Route path={RoutePath.PROFILE} element={<Profile />} />
         </Route>
         <Route path={RoutePath.POSTS} element={<PostList />} />
         <Route path={RoutePath.POSTS_ID} element={<PagePost />} />
