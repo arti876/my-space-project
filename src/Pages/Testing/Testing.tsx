@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Controller, useForm, SubmitHandler } from 'react-hook-form';
-import { Button, IconButton, TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Button, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -11,6 +11,7 @@ import {
 } from './validation';
 import { IformData } from '.';
 import styleMui from './style';
+import ControllerTextField from './ControllerTextField';
 
 export default function Testing() {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,15 +27,12 @@ export default function Testing() {
 
   const {
     control,
-    // register,
-    watch,
     handleSubmit,
     formState: { errors, isValid },
     reset,
-    resetField,
   } = useForm<IformData>({
     mode: 'onBlur',
-    // defaultValues: { firstName: '123' },
+    defaultValues: { firstName: '', lastName: '', email: '', password: '' },
   });
 
   const onSubmit: SubmitHandler<IformData> = (formData) => {
@@ -46,85 +44,55 @@ export default function Testing() {
   return (
     <div className='wrapper-global'>
       <form style={styleMui.form} onSubmit={handleSubmit(onSubmit)}>
-        <Controller
+        <ControllerTextField
           control={control}
           name='firstName'
           rules={firstNameValidation}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextField
-              type='text'
-              label='First Name'
-              onChange={(e) => onChange(e)}
-              onBlur={onBlur}
-              value={value}
-              helperText={errors?.firstName?.message}
-              error={!!errors?.firstName}
-            />
-          )}
+          type='text'
+          label='First Name'
+          helperText={errors?.firstName?.message}
+          error={!!errors?.firstName}
         />
-        <Controller
+        <ControllerTextField
           control={control}
           name='lastName'
           rules={lastNameValidation}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextField
-              type='text'
-              label='Last Name'
-              onChange={(e) => onChange(e)}
-              onBlur={onBlur}
-              value={value}
-              helperText={errors?.lastName?.message}
-              error={!!errors?.lastName}
-            />
-          )}
+          label='Last Name'
+          helperText={errors?.lastName?.message}
+          error={!!errors?.lastName}
         />
-        <Controller
+        <ControllerTextField
           control={control}
           name='email'
           rules={emailValidation}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextField
-              type='text'
-              label='Email'
-              onChange={(e) => onChange(e)}
-              onBlur={onBlur}
-              value={value}
-              helperText={errors?.email?.message}
-              error={!!errors?.email}
-            />
-          )}
+          label='Email'
+          helperText={errors?.email?.message}
+          error={!!errors?.email}
         />
-        <Controller
+        <ControllerTextField
           control={control}
           name='password'
           rules={passwordValidation}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextField
-              type={showPassword ? 'text' : 'password'}
-              label='Password'
-              onChange={(e) => onChange(e)}
-              onBlur={onBlur}
-              value={value}
-              helperText={errors?.password?.message}
-              error={!!errors?.password}
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    aria-label='toggle password visibility'
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge='end'
-                  >
-                    {showPassword ? (
-                      <VisibilityOff sx={styleMui.Visibility} />
-                    ) : (
-                      <Visibility sx={styleMui.Visibility} />
-                    )}
-                  </IconButton>
-                ),
-              }}
-            />
-          )}
+          type={showPassword ? 'text' : 'password'}
+          label='Password'
+          helperText={errors?.password?.message}
+          error={!!errors?.password}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                aria-label='toggle password visibility'
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge='end'
+              >
+                {showPassword ? (
+                  <VisibilityOff sx={styleMui.Visibility} />
+                ) : (
+                  <Visibility sx={styleMui.Visibility} />
+                )}
+              </IconButton>
+            ),
+          }}
         />
         <Button
           type='submit'

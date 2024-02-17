@@ -1,3 +1,5 @@
+type NameType = 'firstName' | 'lastName' | 'email' | 'password';
+
 interface IStyleMui {
   form: object;
   Visibility: object;
@@ -10,4 +12,4 @@ interface IformData {
   password: string;
 }
 
-export type { IStyleMui, IformData };
+export type { IStyleMui, IformData, NameType };

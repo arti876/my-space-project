@@ -1,15 +1,16 @@
-import { TextField } from '@mui/material';
-import { Controller } from 'react-hook-form';
+import { TextField, InputProps as InputPropsMui } from '@mui/material';
+import { Control, Controller } from 'react-hook-form';
+import { IformData, NameType } from '.';
 
 interface ControllerTextFieldProps {
-  control: string;
-  name: string;
+  control: Control<IformData>;
+  name: NameType;
   rules: object;
   label: string;
-  helperText: string;
-  error: string;
+  helperText: string | undefined;
+  error: boolean;
   type?: string;
-  InputProps?: string;
+  InputProps?: InputPropsMui;
 }
 
 export default function ControllerTextField({
