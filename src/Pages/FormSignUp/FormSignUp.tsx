@@ -13,7 +13,7 @@ import { IformData } from '.';
 import styleMui from './style';
 import ControllerTextField from './ControllerTextField';
 
-export default function Testing() {
+export default function FormSignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 

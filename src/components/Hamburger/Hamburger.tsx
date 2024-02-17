@@ -86,9 +86,6 @@ export default function Hamburger() {
           <LinkHamb to={RoutePath.ADVANCED_LEVEL} className={style['btn-menu']}>
             Advanced level
           </LinkHamb>
-          <LinkHamb to={RoutePath.TESTING} className={style['btn-menu']}>
-            Testing
-          </LinkHamb>
           <div className={style['btn-theme']}>
             <BautttonTheme />
           </div>

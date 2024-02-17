@@ -15,7 +15,7 @@ import AppLayout from './Pages/AppLayout/AppLayout';
 import NotFound from './Pages/NotFound/NotFound';
 import Favorites from './Pages/Favorites/Favorites';
 import { RoutePath } from '.';
-import Testing from './Pages/Testing/Testing';
+import SignUp from './Pages/SignUp/SignUn';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +29,7 @@ export default function App() {
       <Route path={RoutePath.ROOT} element={<AppLayout />}>
         <Route index element={<TitlePage />} />
         <Route path={RoutePath.SIGN_IN} element={<FormSignIn />} />
+        <Route path={RoutePath.SIGN_UP} element={<SignUp />} />
         <Route element={<PrivateRoute />}>
           <Route path={RoutePath.SUCCESS} element={<FormSuccess />} />
           <Route path={RoutePath.BLOG} element={<Blog />}>
@@ -41,7 +42,6 @@ export default function App() {
         <Route path={RoutePath.POSTS_ID} element={<PagePost />} />
         <Route path={RoutePath.SEARCH_RESULT} element={<SearchResult />} />
         <Route path={RoutePath.ADVANCED_LEVEL} element={<AdvancedLevel />} />
-        <Route path={RoutePath.TESTING} element={<Testing />} />
         <Route path={RoutePath.NOT_FOUND} element={<NotFound />} />
       </Route>
     </Routes>

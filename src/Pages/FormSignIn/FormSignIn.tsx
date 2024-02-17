@@ -80,7 +80,7 @@ export default function FormSignIn() {
             </ButtonForm>
             <div className={style['container-sing-up']}>
               <p>Dont have an account?</p>
-              <Link to={RoutePath.ROOT} className={style['btn-sign-up']}>
+              <Link to={RoutePath.SIGN_UP} className={style['btn-sign-up']}>
                 Sign Up
               </Link>
             </div>

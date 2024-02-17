@@ -1,6 +1,7 @@
 export enum RoutePath {
   ROOT = '/',
   SIGN_IN = 'sign-in',
+  SIGN_UP = '/sign-up',
   SUCCESS = 'success',
   BLOG = 'blog',
   ALL = 'all',
@@ -15,7 +16,6 @@ export enum RoutePath {
   ADVANCED_LEVEL = 'advanced-level',
   ADD_POST = 'add-post',
   PROFILE = 'profile',
-  TESTING = 'testing',
   NOT_FOUND = '*',
 }
 
