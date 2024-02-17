@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { Button, IconButton, TextField } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import {
   firstNameValidation,
   lastNameValidation,
@@ -13,6 +14,7 @@ import styleMui from './style';
 
 export default function Testing() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -25,17 +27,21 @@ export default function Testing() {
   const {
     control,
     // register,
+    watch,
     handleSubmit,
     formState: { errors, isValid },
     reset,
-  } = useForm<IformData>({ mode: 'onBlur' });
+    resetField,
+  } = useForm<IformData>({
+    mode: 'onBlur',
+    // defaultValues: { firstName: '123' },
+  });
 
   const onSubmit: SubmitHandler<IformData> = (formData) => {
     console.log(formData);
     reset();
+    // navigate('/success');
   };
-
-  console.log(errors);
 
   return (
     <div className='wrapper-global'>
@@ -44,12 +50,13 @@ export default function Testing() {
           control={control}
           name='firstName'
           rules={firstNameValidation}
-          render={({ field: { onChange, onBlur } }) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextField
               type='text'
               label='First Name'
               onChange={(e) => onChange(e)}
               onBlur={onBlur}
+              value={value}
               helperText={errors?.firstName?.message}
               error={!!errors?.firstName}
             />
@@ -59,12 +66,13 @@ export default function Testing() {
           control={control}
           name='lastName'
           rules={lastNameValidation}
-          render={({ field: { onChange, onBlur } }) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextField
               type='text'
               label='Last Name'
               onChange={(e) => onChange(e)}
               onBlur={onBlur}
+              value={value}
               helperText={errors?.lastName?.message}
               error={!!errors?.lastName}
             />
@@ -74,12 +82,13 @@ export default function Testing() {
           control={control}
           name='email'
           rules={emailValidation}
-          render={({ field: { onChange, onBlur } }) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextField
               type='text'
               label='Email'
               onChange={(e) => onChange(e)}
               onBlur={onBlur}
+              value={value}
               helperText={errors?.email?.message}
               error={!!errors?.email}
             />
@@ -89,12 +98,13 @@ export default function Testing() {
           control={control}
           name='password'
           rules={passwordValidation}
-          render={({ field: { onChange, onBlur } }) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextField
               type={showPassword ? 'text' : 'password'}
               label='Password'
               onChange={(e) => onChange(e)}
               onBlur={onBlur}
+              value={value}
               helperText={errors?.password?.message}
               error={!!errors?.password}
               InputProps={{
@@ -120,7 +130,7 @@ export default function Testing() {
           type='submit'
           variant='contained'
           size='large'
-          // disabled={!isValid}
+          disabled={!isValid}
         >
           Sign Up
         </Button>
