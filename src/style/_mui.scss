@@ -1,0 +1,73 @@
+.style-mui {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  max-width: 400px;
+  border: 2px solid #dadada;
+  padding: 40px;
+  margin: 0px auto;
+  .css-1n6vx2r-MuiFormLabel-root-MuiInputLabel-root {
+    font-size: 14px;
+    transform: translate(14px, -17px) scale(0.75);
+  }
+  .css-1tpjn30-MuiFormLabel-root-MuiInputLabel-root {
+    font-size: 14px;
+    top: -15%;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    padding: 10px 20px;
+    background-color: var(--contextual-colors-white);
+  }
+  .css-14lo706 {
+    span {
+      display: none;
+    }
+  }
+  .css-etw6d-MuiInputBase-root-MuiOutlinedInput-root {
+    background-color: var(--contextual-colors-white);
+  }
+  .css-1wc848c-MuiFormHelperText-root {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-size: 9px;
+  }
+  .css-xuao1k-MuiButtonBase-root-MuiButton-root {
+    font-size: 14px;
+    line-height: 1rem;
+    padding: 12px;
+    width: 100%;
+  }
+}
+
+.link-forgot-password {
+  max-width: 100%;
+  color: var(--system-colors-primaty-2);
+  margin-top: 10px;
+  margin-right: auto;
+  transition: 0.3s;
+}
+
+.container-link-sing-up {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.container-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-sign-up {
+  color: var(--system-colors-primaty-2);
+  transition: 0.3s;
+}
+
+.link-sign-up:hover,
+.link-forgot-password:hover {
+  color: var(--hover);
+}

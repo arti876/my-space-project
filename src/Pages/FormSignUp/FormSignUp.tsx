@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   firstNameValidation,
   lastNameValidation,
@@ -12,8 +12,13 @@ import {
 import { IformData } from '.';
 import styleMui from './style';
 import ControllerTextField from './ControllerTextField';
+import { RoutePath } from '../..';
 
-export default function FormSignUp() {
+interface FormSignUpProps {
+  location: string;
+}
+
+export default function FormSignUp({ location }: FormSignUpProps) {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -42,33 +47,37 @@ export default function FormSignUp() {
   };
 
   return (
-    <div className='wrapper-global'>
-      <form style={styleMui.form} onSubmit={handleSubmit(onSubmit)}>
-        <ControllerTextField
-          control={control}
-          name='firstName'
-          rules={firstNameValidation}
-          type='text'
-          label='First Name'
-          helperText={errors?.firstName?.message}
-          error={!!errors?.firstName}
-        />
-        <ControllerTextField
-          control={control}
-          name='lastName'
-          rules={lastNameValidation}
-          label='Last Name'
-          helperText={errors?.lastName?.message}
-          error={!!errors?.lastName}
-        />
-        <ControllerTextField
-          control={control}
-          name='email'
-          rules={emailValidation}
-          label='Email'
-          helperText={errors?.email?.message}
-          error={!!errors?.email}
-        />
+    <form className='style-mui' onSubmit={handleSubmit(onSubmit)}>
+      {location === RoutePath.SIGN_UP && (
+        <>
+          <ControllerTextField
+            control={control}
+            name='firstName'
+            rules={firstNameValidation}
+            type='text'
+            label='First Name'
+            helperText={errors?.firstName?.message}
+            error={!!errors?.firstName}
+          />
+          <ControllerTextField
+            control={control}
+            name='lastName'
+            rules={lastNameValidation}
+            label='Last Name'
+            helperText={errors?.lastName?.message}
+            error={!!errors?.lastName}
+          />
+        </>
+      )}
+      <ControllerTextField
+        control={control}
+        name='email'
+        rules={emailValidation}
+        label='Email'
+        helperText={errors?.email?.message}
+        error={!!errors?.email}
+      />
+      <div className='container-password'>
         <ControllerTextField
           control={control}
           name='password'
@@ -94,6 +103,13 @@ export default function FormSignUp() {
             ),
           }}
         />
+        {location === RoutePath.SIGN_IN && (
+          <Link to={RoutePath.ROOT} className='link-forgot-password'>
+            Forgot password?
+          </Link>
+        )}
+      </div>
+      <div>
         <Button
           type='submit'
           variant='contained'
@@ -102,7 +118,15 @@ export default function FormSignUp() {
         >
           Sign Up
         </Button>
-      </form>
-    </div>
+        {location === RoutePath.SIGN_IN && (
+          <div className='container-link-sing-up'>
+            <p>Dont have an account?</p>
+            <Link to={RoutePath.SIGN_UP} className='link-sign-up'>
+              Sign Up
+            </Link>
+          </div>
+        )}
+      </div>
+    </form>
   );
 }
