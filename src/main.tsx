@@ -9,6 +9,7 @@ import Theme from './components/Theme/Theme';
 import MyThemeProvider from './Provider/ThemeProvider';
 import './index.scss';
 import ThemeMui from './style/ThemeMui';
+import './firebase';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>

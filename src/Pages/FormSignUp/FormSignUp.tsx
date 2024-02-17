@@ -16,9 +16,10 @@ import { RoutePath } from '../..';
 
 interface FormSignUpProps {
   location: string;
+  handleClick: (email: string, password: string) => void;
 }
 
-export default function FormSignUp({ location }: FormSignUpProps) {
+export default function FormSignUp({ location, handleClick }: FormSignUpProps) {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -40,8 +41,14 @@ export default function FormSignUp({ location }: FormSignUpProps) {
     defaultValues: { firstName: '', lastName: '', email: '', password: '' },
   });
 
-  const onSubmit: SubmitHandler<IformData> = (formData) => {
-    console.log(formData);
+  const onSubmit: SubmitHandler<IformData> = ({
+    firstName,
+    lastName,
+    email,
+    password,
+  }) => {
+    console.log(firstName, lastName, email, password);
+    handleClick(email, password);
     reset();
     // navigate('/success');
   };

@@ -26,6 +26,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.6.7",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "firebase": "^10.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
